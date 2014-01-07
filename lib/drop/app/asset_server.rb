@@ -5,6 +5,7 @@ require 'sprockets'
 require 'coffee_script'
 require 'sass'
 require 'lodash-assets'
+require 'react-jsx-sprockets'
 require 'marbles-js'
 require 'icing'
 
