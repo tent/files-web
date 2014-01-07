@@ -1,0 +1,50 @@
+/** @jsx React.DOM */
+
+(function () {
+
+	var navItems = [
+		{ fragment: "uploads/new", iconName: "cloud-upload", name: "Upload" },
+		{ fragment: "manage", iconName: "clock", name: "Manage" }
+	];
+
+	Drop.Views.AppNav = React.createClass({
+		getInitialState: function () {
+			return {
+				navItems: navItems,
+				activeFragment: null
+			};
+		},
+
+		render: function () {
+			var AppNavItem = Drop.Views.AppNavItem;
+			var navItems = this.state.navItems.map(function (item) {
+				return <AppNavItem key={item.fragment} fragment={item.fragment} active={item.fragment === this.state.activeFragment} iconName={item.iconName} name={item.name} />;
+			}.bind(this));
+			return (
+				<div>
+					<a className="menu-switch js-menu-switch">Menu</a>
+					<ul className="unstyled app-nav-list">
+						{navItems}
+					</ul>
+				</div>
+			);
+		}
+	});
+
+	Drop.Views.AppNavItem = React.createClass({
+		fragmentPath: function (fragment) {
+			return Drop.Helpers.fullPath('/' + fragment);
+		},
+
+		render: function () {
+			return (
+				<a className={this.props.active ? 'active' : ''} href={this.fragmentPath(this.props.fragment)}>
+					<li>
+						<i className={"picto picto-" + this.props.iconName}></i>{this.props.name}
+					</li>
+				</a>
+			);
+		}
+	});
+
+})();
