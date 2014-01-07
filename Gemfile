@@ -14,6 +14,7 @@ gem 'marbles-js', :git => 'git://github.com/jvatic/marbles-js.git', :branch => '
 gem 'icing', :git => 'git://github.com/tent/icing.git', :branch => 'master'
 gem 'sprockets', '~> 2.0', :git => 'git://github.com/jvaill/sprockets.git', :branch => 'master'
 gem 'lodash-assets', :git => 'git://github.com/jvatic/lodash-assets.git', :branch => 'master'
+gem 'react-jsx-sprockets', :git => 'git://github.com/jvatic/react-jsx-sprockets.git', :branch => 'master'
 
 group :development, :assets do
   gem 'asset_sync', :git => 'git://github.com/titanous/asset_sync.git', :branch => 'fix-mime'

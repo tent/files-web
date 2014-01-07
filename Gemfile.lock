@@ -40,6 +40,17 @@ GIT
       sprockets-sass (~> 0.5)
 
 GIT
+  remote: git://github.com/jvatic/react-jsx-sprockets.git
+  revision: 7ea77c58eb05a3573bd9c03f7149b1101cdf20fe
+  branch: master
+  specs:
+    react-jsx-sprockets (0.0.2)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt (>= 1.3.3)
+      yajl-ruby
+
+GIT
   remote: git://github.com/tent/rack-putty.git
   revision: ebb5a62dc895ce0b73fa6cd3dda330226f42beb9
   branch: master
@@ -146,6 +157,7 @@ DEPENDENCIES
   puma
   rack-putty!
   rake
+  react-jsx-sprockets!
   sass
   sprockets (~> 2.0)!
   sprockets-rainpress
