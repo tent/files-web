@@ -11,6 +11,7 @@ gem 'sass'
 
 gem 'rack-putty', :git => 'git://github.com/tent/rack-putty.git', :branch => 'master'
 gem 'marbles-js', :git => 'git://github.com/jvatic/marbles-js.git', :branch => 'redesign'
+gem 'marbles-tent-client-js', :git => 'git://github.com/tent/marbles-tent-client-js.git', :branch => 'redesign'
 gem 'icing', :git => 'git://github.com/tent/icing.git', :branch => 'master'
 gem 'sprockets', '~> 2.0', :git => 'git://github.com/jvaill/sprockets.git', :branch => 'master'
 gem 'lodash-assets', :git => 'git://github.com/jvatic/lodash-assets.git', :branch => 'master'

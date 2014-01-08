@@ -51,6 +51,13 @@ GIT
       yajl-ruby
 
 GIT
+  remote: git://github.com/tent/marbles-tent-client-js.git
+  revision: 1b51240ccfee0637a653a3e3697ff5e4522b6098
+  branch: redesign
+  specs:
+    marbles-tent-client-js (0.0.1)
+
+GIT
   remote: git://github.com/tent/rack-putty.git
   revision: ebb5a62dc895ce0b73fa6cd3dda330226f42beb9
   branch: master
@@ -152,6 +159,7 @@ DEPENDENCIES
   icing!
   lodash-assets!
   marbles-js!
+  marbles-tent-client-js!
   mime-types
   mimetype-fu
   puma
