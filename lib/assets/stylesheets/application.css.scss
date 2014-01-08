@@ -4,3 +4,16 @@
 .fa.nav-icon {
   line-height: 1;
 }
+
+.drop-zone {
+	border: 4px dashed $gray;
+	padding: 1em;
+	margin-bottom: 1em;
+
+	color: $gray;
+	font-size: 24pt;
+
+	&.active {
+		border-color: $blue;
+	}
+}
