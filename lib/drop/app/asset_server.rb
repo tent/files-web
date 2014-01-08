@@ -7,6 +7,7 @@ require 'sass'
 require 'lodash-assets'
 require 'react-jsx-sprockets'
 require 'marbles-js'
+require 'marbles-tent-client-js'
 require 'icing'
 
 module Drop
@@ -47,6 +48,7 @@ module Drop
           end
 
           MarblesJS::Sprockets.setup(environment, vendor: true)
+          MarblesTentClientJS::Sprockets.setup(environment)
           Icing::Sprockets.setup(environment)
 
           environment
