@@ -67,6 +67,11 @@
 
 					<DragFileInput errorHandler={this.handleError} fileHandler={this.handleFile}>Drop file here</DragFileInput>
 
+					<label>
+						Name:&nbsp;
+						<input type='text' ref='name' placeholder={this.state.file ? this.state.file.name : '' } />
+					</label>
+
 					<button type="submit" className='btn btn-primary'>Upload</button>
 				</form>
 			);
