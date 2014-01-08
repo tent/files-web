@@ -5,8 +5,28 @@
 	Drop.Views.Upload = React.createClass({
 		getInitialState: function () {
 			return {
-				error: null
+				error: null,
+				maxFileSize: 10000000 // 10MB
 			};
+		},
+
+		formattedStorageAmount: function (size) {
+			var d, units;
+			if (size >= 1000000000) { // >= 1GB
+				d = 1000000000;
+				units = 'GB';
+			} else if (size >= 1000000) { // >= 1MB
+				d = 1000000;
+				units = 'MB';
+			} else if (size >= 1000) { // >= 1KB
+				d = 1000;
+				units = 'KB';
+			} else { // < 1KB
+				d = 1;
+				units = ' bytes';
+			}
+
+			return ((parseInt((size / d) * 100) / 100) || 0) + units;
 		},
 
 		handleSubmit: function (e) {
@@ -23,6 +43,11 @@
 		},
 
 		handleFile: function (file) {
+			if (file.size > this.state.maxFileSize) {
+				this.handleError("The file you selected is " + this.formattedStorageAmount(file.size) + ". Please select one under " + this.formattedStorageAmount(this.state.maxFileSize) + ".");
+				return;
+			}
+
 			this.setState({ error: null });
 
 			console.log('handleFile', file);
