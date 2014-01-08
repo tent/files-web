@@ -11,6 +11,10 @@
 
 		handleSubmit: function (e) {
 			e.preventDefault();
+			if (!this.state.file) {
+				this.handleError("Please select a file to upload.");
+				return;
+			}
 			// TODO: upload selected file
 		},
 
