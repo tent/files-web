@@ -36,9 +36,14 @@
 			return Drop.Helpers.fullPath('/' + fragment);
 		},
 
+		handleClick: function (e) {
+			e.preventDefault();
+			Marbles.history.navigate(this.props.fragment, { trigger: true });
+		},
+
 		render: function () {
 			return (
-				<a className={this.props.active ? 'active' : ''} href={this.fragmentPath(this.props.fragment)}>
+				<a className={this.props.active ? 'active' : ''} href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
 					<li>
 						<i className={"picto picto-" + this.props.iconName}></i>{this.props.name}
 					</li>
