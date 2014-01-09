@@ -31,6 +31,10 @@
 			return ((parseInt((size / d) * 100) / 100) || 0) + units;
 		},
 
+		shouldDisableSubmit: function () {
+			return !this.props.model || !this.props.model.file;
+		},
+
 		bindModel: function (model) {
 			if (!model) {
 				return;
@@ -116,7 +120,7 @@
 						<input type='text' ref='name' placeholder={this.props.model.get('file.name') || '' } />
 					</label>
 
-					<button type="submit" className='btn btn-primary'>Upload</button>
+					<button type="submit" disabled={this.shouldDisableSubmit()} className='btn btn-primary'>Upload</button>
 				</form>
 			);
 		}
