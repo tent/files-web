@@ -36,6 +36,14 @@
 			return !this.props.model || !this.props.model.file || this.state.saving;
 		},
 
+		submitButtonDisplayText: function () {
+			if (this.state.saving) {
+				return "Uploading";
+			} else {
+				return "Upload";
+			}
+		},
+
 		bindModel: function (model) {
 			if (!model) {
 				return;
@@ -133,7 +141,7 @@
 						<input type='text' ref='name' placeholder={this.props.model.get('file.name') || '' } />
 					</label>
 
-					<button type="submit" disabled={this.shouldDisableSubmit()} className='btn btn-primary'>Upload</button>
+					<button type="submit" disabled={this.shouldDisableSubmit()} className='btn btn-primary'>{this.submitButtonDisplayText()}</button>
 				</form>
 			);
 		}
