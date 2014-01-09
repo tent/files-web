@@ -31,11 +31,16 @@
 
 		handleSubmit: function (e) {
 			e.preventDefault();
-			if (!this.state.file) {
+
+			var model = this.props.model;
+
+			if (!model.get('file')) {
 				this.handleError("Please select a file to upload.");
 				return;
 			}
-			// TODO: upload selected file
+
+			model.set('name', this.refs.name.getDOMNode().value.trim() || model.get('file.name'));
+			model.save();
 		},
 
 		handleError: function (err) {
@@ -48,9 +53,9 @@
 				return;
 			}
 
-			this.setState({ error: null });
+			this.props.model.set('file', file);
 
-			console.log('handleFile', file);
+			this.setState({error: null});
 		},
 
 		render: function () {
@@ -65,11 +70,11 @@
 				<form onSubmit={this.handleSubmit}>
 					{alertNode}
 
-					<DragFileInput errorHandler={this.handleError} fileHandler={this.handleFile}>Drop file here</DragFileInput>
+					<DragFileInput errorHandler={this.handleError} fileHandler={this.handleFile} file={this.props.model.get('file')}>Drop file here</DragFileInput>
 
 					<label>
 						Name:&nbsp;
-						<input type='text' ref='name' placeholder={this.state.file ? this.state.file.name : '' } />
+						<input type='text' ref='name' placeholder={this.props.model.get('file.name') || '' } />
 					</label>
 
 					<button type="submit" className='btn btn-primary'>Upload</button>
@@ -81,8 +86,7 @@
 	Drop.Views.DragFileInput = React.createClass({
 		getInitialState: function () {
 			return {
-				active: false,
-				file: null
+				active: false
 			};
 		},
 
@@ -117,17 +121,13 @@
 				return;
 			}
 
-			var file = files[0];
-
-			this.setState({ file: file });
-
-			this.props.fileHandler(file);
+			this.props.fileHandler(files[0]);
 		},
 
 		render: function () {
 			return (
 				<div className={'drop-zone ' + (this.state.active ? 'active' : '')} onDragOver={this.handleDragOver} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
-					{this.state.file ? this.state.file.name : this.props.children}
+					{this.props.file ? this.props.file.name : this.props.children}
 				</div>
 			);
 		}
