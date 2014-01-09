@@ -3,6 +3,8 @@
 (function () {
 
 	Drop.Views.Upload = React.createClass({
+		displayName: 'Drop.Views.Upload',
+
 		getInitialState: function () {
 			return {
 				error: null,
@@ -29,6 +31,35 @@
 			return ((parseInt((size / d) * 100) / 100) || 0) + units;
 		},
 
+		bindModel: function (model) {
+			if (!model) {
+				return;
+			}
+			model.on('save:failure', this.handleSaveFailure, this);
+		},
+
+		unbindModel: function (model) {
+			if (!model) {
+				return;
+			}
+			model.off('save:failure', this.handleSaveFailure, this);
+		},
+
+		componentDidMount: function () {
+			this.bindModel(this.props.model);
+		},
+
+		componentWillUnmount: function () {
+			this.unbindModel(this.props.model);
+		},
+
+		componentWillReceiveProps: function (props) {
+			if (this.props.model !== props.model) {
+				this.unbindModel(this.props.model);
+				this.bindModel(props.model);
+			}
+		},
+
 		handleSubmit: function (e) {
 			e.preventDefault();
 
@@ -41,6 +72,14 @@
 
 			model.set('name', this.refs.name.getDOMNode().value.trim() || model.get('file.name'));
 			model.save();
+		},
+
+		handleSaveFailure: function (res, xhr) {
+			if (res.error) {
+				this.handleError(res.error);
+			} else {
+				this.handleError("Error creating file: " + xhr.status + ".");
+			}
 		},
 
 		handleError: function (err) {
