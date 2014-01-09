@@ -43,6 +43,17 @@ In production, serve the static assets found in `ASSETS_DIR`.
 
 For development, run `bundle exec puma` to live compile assets.
 
+## Post Type
+
+`https://tent.io/types/post/file/v0`
+
+Property | Required | Type   | Description
+-------- | -------- | ------ | -----------
+
+(There are currently no properties.)
+
+A single attachment is required.
+
 ## Contributing
 
 1. Fork it
