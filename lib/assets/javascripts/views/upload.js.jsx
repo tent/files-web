@@ -148,6 +148,8 @@
 	});
 
 	Drop.Views.DragFileInput = React.createClass({
+		displayName: 'Drop.Views.DragFileInput',
+
 		getInitialState: function () {
 			return {
 				active: false
