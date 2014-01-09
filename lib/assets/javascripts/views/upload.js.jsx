@@ -8,6 +8,7 @@
 		getInitialState: function () {
 			return {
 				error: null,
+				saving: false,
 				maxFileSize: 10000000 // 10MB
 			};
 		},
@@ -32,21 +33,25 @@
 		},
 
 		shouldDisableSubmit: function () {
-			return !this.props.model || !this.props.model.file;
+			return !this.props.model || !this.props.model.file || this.state.saving;
 		},
 
 		bindModel: function (model) {
 			if (!model) {
 				return;
 			}
+			model.on('save:start', this.handleSaveStart, this);
 			model.on('save:failure', this.handleSaveFailure, this);
+			model.on('save:complete', this.handleSaveComplete, this);
 		},
 
 		unbindModel: function (model) {
 			if (!model) {
 				return;
 			}
+			model.off('save:start', this.handleSaveStart, this);
 			model.off('save:failure', this.handleSaveFailure, this);
+			model.off('save:complete', this.handleSaveComplete, this);
 		},
 
 		componentDidMount: function () {
@@ -78,12 +83,20 @@
 			model.save();
 		},
 
+		handleSaveStart: function () {
+			this.setState({ saving: true });
+		},
+
 		handleSaveFailure: function (res, xhr) {
 			if (res.error) {
 				this.handleError(res.error);
 			} else {
 				this.handleError("Error creating file: " + xhr.status + ".");
 			}
+		},
+
+		handleSaveComplete: function () {
+			this.setState({ saving: false });
 		},
 
 		handleError: function (err) {
