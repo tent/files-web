@@ -8,6 +8,8 @@
 	];
 
 	Drop.Views.AppNav = React.createClass({
+		displayName: 'Drop.Views.AppNav',
+
 		getInitialState: function () {
 			return {
 				navItems: navItems,
