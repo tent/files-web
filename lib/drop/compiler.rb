@@ -107,7 +107,6 @@ module Drop
       configure_layout
 
       layout_path = self.layout_path
-      Drop.settings[:render_app_nav] = !is_public
 
       require 'drop/app'
       status, headers, body = Drop::App::RenderView.new(lambda {}).call(layout_env)
