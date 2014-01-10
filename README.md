@@ -13,6 +13,7 @@ ENV                  | Required | Description
 `ASSET_ROOT`         | Optional | URL prefix of where assets are located (defaults to `/assets`, e.g. an asset named `foo` would be found at `/assets/foo`).
 `ASSET_CACHE_DIR`    | Optional | Filesystem path used by Sprockets to cache compiled assets.
 `APP_ASSET_MANIFEST` | Optional | Filesystem path to manifest.json.
+`SESSION_SECRET`     | Optional | Set unless you want to login every time the app restarts.
 
 All ENV vars must be set at compile time and when running the ruby app (for development purposes only).
 
@@ -27,6 +28,19 @@ The app requires a JSON config as shown below.
 #### Development
 
 `config.json` in the project root will be used if `JSON_CONFIG_URL` is not set.
+
+#### Heroku
+
+```
+heroku create
+heroku labs:enable user-env-compile
+heroku config:add \
+ SESSION_SECRET=$(openssl rand -hex 16 | tr -d '\r\n') \
+ URL=$(heroku info -s | grep web_url | cut -f2 -d"=" | sed 's/http/https/' | sed 's/\/$//') \
+ APP_ASSET_MANIFEST=./public/assets/manifest.json
+git push heroku master
+heroku open
+```
 
 ### Compiling
 
