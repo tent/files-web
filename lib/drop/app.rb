@@ -1,4 +1,5 @@
 require 'rack-putty'
+require 'omniauth-tent'
 require 'securerandom'
 
 module Drop
