@@ -3,7 +3,6 @@
 (function () {
 
 	var navItems = [
-		{ fragment: "uploads/new", iconName: "cloud-upload", name: "Upload" },
 		{ fragment: "manage", iconName: "clock", name: "Manage" }
 	];
 
