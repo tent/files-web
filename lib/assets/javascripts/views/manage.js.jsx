@@ -70,7 +70,7 @@
 			return (
 				<div>
 					<FileAlerts modelClass={this.props.collection.constructor.model} />
-					<table className='table table-striped'>
+					<table className='table table-striped manage-uploads-table'>
 						<thead>
 							<tr>
 								<th>Filename</th>
