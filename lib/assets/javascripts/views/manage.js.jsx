@@ -56,7 +56,7 @@
 						rows.push(
 							<tr key={model.cid}>
 								<td>{model.get('file_meta.name')}</td>
-								<td><a href={model.get('link')}>download</a></td>
+								<td><a className='icon' href={model.get('link')} title='Download'><i className='fa fa-download'></i></a></td>
 								<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
 								<td title={model.get('file_meta.type')}>{model.get('file_meta.ext')}</td>
 								<td title={Drop.Helpers.formatDateTime(model.get('published_at'))}>{Drop.Helpers.formatRelativeTime(model.get('published_at'))}</td>
@@ -104,7 +104,7 @@
 
 		render: function () {
 			return (
-				<button className='btn btn-link' onClick={this.handleClick} title={'Delete ' + this.props.name}>delete</button>
+				<a href='#' className='icon' title={'Delete ' + this.props.name} onClick={this.handleClick}><i className='fa fa-trash-o'></i></a>
 			);
 		}
 	});
