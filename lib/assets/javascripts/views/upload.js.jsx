@@ -117,7 +117,7 @@ Drop.Views.Upload = React.createClass({
 			<form onSubmit={this.handleSubmit}>
 				{alertNode}
 
-				<DragFileInput errorHandler={this.handleError} fileHandler={this.handleFile} file={this.props.model.get('file')}>Drop file here</DragFileInput>
+				<DragFileInput errorHandler={this.handleError} fileHandler={this.handleFile} file={this.props.model.get('file')}>Drop file here to upload</DragFileInput>
 
 				<label>
 					Name:&nbsp;
