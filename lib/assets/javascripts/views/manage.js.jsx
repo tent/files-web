@@ -4,7 +4,9 @@ Drop.Views.Manage = React.createClass({
 	displayName: 'Drop.Views.Manage',
 
 	getInitialState: function () {
-		return {};
+		return {
+			lastPage: true
+		};
 	},
 
 	bindCollection: function (collection) {
@@ -16,7 +18,18 @@ Drop.Views.Manage = React.createClass({
 	},
 
 	handleCollectionChange: function () {
-		this.setState({ models: this.props.collection.models() });
+		var collection = this.props.collection;
+		this.setState({
+			models: collection.models(),
+			lastPage: !collection.pages.next
+		});
+	},
+
+	loadNextPage: function () {
+		var res = this.props.collection.fetchNext({ append: true });
+		if (res === false) {
+			this.setState({ lastPage: true });
+		}
 	},
 
 	componentDidMount: function () {
@@ -37,7 +50,8 @@ Drop.Views.Manage = React.createClass({
 	render: function () {
 		var DeleteFileButton = Drop.Views.DeleteFileButton,
 				FileAlerts = Drop.Views.FileAlerts,
-				RelativeTimestamp = Drop.Views.RelativeTimestamp;
+				RelativeTimestamp = Drop.Views.RelativeTimestamp,
+				InfiniteScroll = React.addons.InfiniteScroll;
 		var rows = [],
 				model;
 		if (this.state.models) {
@@ -85,6 +99,12 @@ Drop.Views.Manage = React.createClass({
 						{rows}
 					</tbody>
 				</table>
+
+				<InfiniteScroll
+					loadMore={this.loadNextPage}
+					hasMore={!this.state.lastPage}
+					loader={<div>Loading...</div>}
+					threshold={250} />
 			</div>
 		);
 	}
