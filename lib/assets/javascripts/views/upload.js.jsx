@@ -101,6 +101,10 @@ Drop.Views.Upload = React.createClass({
 		this.setState({error: null});
 	},
 
+	handlePublicChanged: function (e) {
+		this.props.model.set('permissions.public', e.target.value === 'true');
+	},
+
 	render: function () {
 		var DragFileInput = Drop.Views.DragFileInput;
 
@@ -119,6 +123,17 @@ Drop.Views.Upload = React.createClass({
 					Name:&nbsp;
 					<input type='text' ref='name' placeholder={this.props.model.get('file.name') || '' } />
 				</label>
+
+				<div className='clearfix permissions-radio-group'>
+					<label className='pull-left'>
+						Public&nbsp;
+						<input type='radio' name='public' value='true' defaultChecked={this.props.model.get('permissions.public') !== false} onChange={this.handlePublicChanged} />
+					</label>
+					<label className='pull-left'>
+						Private&nbsp;
+						<input type='radio' name='public' value='false' defaultChecked={this.props.model.get('permissions.public') === false} onChange={this.handlePublicChanged} />
+					</label>
+				</div>
 
 				<button type="submit" disabled={this.shouldDisableSubmit()} className='btn btn-primary'>{this.submitButtonDisplayText()}</button>
 			</form>
