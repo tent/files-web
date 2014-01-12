@@ -1,10 +1,31 @@
 /** @jsx React.DOM */
 
 Drop.Views.RelativeTimestamp = React.createClass({
+	getInitialState: function () {
+		return {};
+	},
+
 	resetInterval: function () {
-		this.setState({
-			interval: setInterval(this.forceUpdate.bind(this), 1000)
-		});
+		this.clearInterval();
+
+		var updateEvery = function (n) {
+			this.setState({
+				interval: setInterval(this.forceUpdate.bind(this), n)
+			});
+		}.bind(this);
+
+    var delta = Date.now() - this.props.milliseconds;
+    if (delta < 60000) { // less than 1 minute ago
+			updateEvery(2000); // update in 2 seconds
+		} else if (delta < 3600000) { // less than 1 hour ago
+			updateEvery(30000); // update in 30 seconds
+		} else if (delta < 86400000) { // less than 1 day ago
+			updateEvery(1800000); // update in 30 minutes
+		} else if (delta < 2678400000) { // 31 days ago
+			updateEvery(43200000); // update in 12 hours
+		} else {
+			updateEvery(2419000000); // update in 28 days
+		}
 	},
 
 	clearInterval: function () {
