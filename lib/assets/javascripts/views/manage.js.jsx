@@ -38,7 +38,8 @@
 
 		render: function () {
 			var DeleteFileButton = Drop.Views.DeleteFileButton,
-					FileAlerts = Drop.Views.FileAlerts;
+					FileAlerts = Drop.Views.FileAlerts,
+					RelativeTimestamp = Drop.Views.RelativeTimestamp;
 			var rows = [],
 					model;
 			if (this.state.models) {
@@ -59,7 +60,7 @@
 								<td><a className='icon' href={model.get('link')} title='Download'><i className='fa fa-download'></i></a></td>
 								<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
 								<td title={model.get('file_meta.type')}>{model.get('file_meta.ext')}</td>
-								<td title={Drop.Helpers.formatDateTime(model.get('published_at'))}>{Drop.Helpers.formatRelativeTime(model.get('published_at'))}</td>
+								<td><RelativeTimestamp milliseconds={model.get('published_at')} /></td>
 								<td><DeleteFileButton model={model} name={model.get('file_meta.name')} /></td>
 							</tr>
 						);
@@ -162,6 +163,36 @@
 			} else {
 				return <div />;
 			}
+		}
+	});
+
+	Drop.Views.RelativeTimestamp = React.createClass({
+		resetInterval: function () {
+			this.setState({
+				interval: setInterval(this.forceUpdate.bind(this), 1000)
+			});
+		},
+
+		clearInterval: function () {
+			clearInterval(this.state.interval);
+		},
+
+		componentDidMount: function () {
+			this.resetInterval();
+		},
+
+		componentWillUnmount: function () {
+			this.clearInterval();
+		},
+
+		componentWillReceiveProps: function (props) {
+			if (this.props.milliseconds !== props.milliseconds) {
+				this.resetInterval();
+			}
+		},
+
+		render: function () {
+			return <span title={Drop.Helpers.formatDateTime(this.props.milliseconds)}>{Drop.Helpers.formatRelativeTime(this.props.milliseconds)}</span>;
 		}
 	});
 
