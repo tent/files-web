@@ -13,25 +13,6 @@
 			};
 		},
 
-		formattedStorageAmount: function (size) {
-			var d, units;
-			if (size >= 1000000000) { // >= 1GB
-				d = 1000000000;
-				units = 'GB';
-			} else if (size >= 1000000) { // >= 1MB
-				d = 1000000;
-				units = 'MB';
-			} else if (size >= 1000) { // >= 1KB
-				d = 1000;
-				units = 'KB';
-			} else { // < 1KB
-				d = 1;
-				units = ' bytes';
-			}
-
-			return ((parseInt((size / d) * 100) / 100) || 0) + units;
-		},
-
 		shouldDisableSubmit: function () {
 			return !this.props.model || !this.props.model.file || this.state.saving;
 		},
@@ -113,7 +94,7 @@
 
 		handleFile: function (file) {
 			if (file.size > this.state.maxFileSize) {
-				this.handleError("The file you selected is " + this.formattedStorageAmount(file.size) + ". Please select one under " + this.formattedStorageAmount(this.state.maxFileSize) + ".");
+				this.handleError("The file you selected is " + Drop.Helpers.formattedStorageAmount(file.size) + ". Please select one under " + Drop.Helpers.formattedStorageAmount(this.state.maxFileSize) + ".");
 				return;
 			}
 
