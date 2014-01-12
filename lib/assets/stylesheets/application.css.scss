@@ -28,6 +28,38 @@
 	}
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 a.icon, a.icon:hover {
 	text-decoration: none;
 }
+
+.share-container {
+	position: relative;
+}
+	.share-box {
+		position: absolute;
+		left: 2em;
+		top: 0px;
+		width: 16em;
+		background-color: $white;
+		padding: 0.2em;
+		border: 1px solid $paragraphColor;
+		z-index: 12;
+
+		input {
+			margin: 0px;
+		}
+
+		.url {
+			width: 13em;
+			margin-right: 0.5em;
+		}
+
+		select {
+			float: left;
+			width: auto;
+		}
+	}
