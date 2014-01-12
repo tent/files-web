@@ -19,6 +19,15 @@
 	}
 }
 
+.manage-uploads-table {
+	tr {
+		td:first-child {
+			max-width: 2em;
+			word-wrap: break-word;
+		}
+	}
+}
+
 a.icon, a.icon:hover {
 	text-decoration: none;
 }
