@@ -57,7 +57,7 @@
 							<tr key={model.cid}>
 								<td>{model.get('file_meta.name')}</td>
 								<td><a href={model.get('link')}>download</a></td>
-								<td>{model.get('file_meta.size')}</td>
+								<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
 								<td>{model.get('file_meta.type')}</td>
 								<td>{model.get('published_at')}</td>
 								<td><DeleteFileButton model={model} name={model.get('file_meta.name')} /></td>
