@@ -49,6 +49,7 @@ Drop.Views.Manage = React.createClass({
 
 	render: function () {
 		var DeleteFileButton = Drop.Views.DeleteFileButton,
+				FileDownloadButton = Drop.Views.FileDownloadButton,
 				FileAlerts = Drop.Views.FileAlerts,
 				RelativeTimestamp = Drop.Views.RelativeTimestamp,
 				InfiniteScroll = React.addons.InfiniteScroll;
@@ -69,7 +70,7 @@ Drop.Views.Manage = React.createClass({
 					rows.push(
 						<tr key={model.cid}>
 							<td>{model.get('file_meta.name')}</td>
-							<td><a className='icon' href={model.get('link')} title='Download'><i className='picto picto-file-open'></i></a></td>
+							<td><FileDownloadButton file={model} /></td>
 							<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
 							<td title={model.get('file_meta.type')}>{model.get('file_meta.ext')}</td>
 							<td><RelativeTimestamp milliseconds={model.get('published_at')} /></td>
