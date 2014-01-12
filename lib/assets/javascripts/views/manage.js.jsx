@@ -58,7 +58,7 @@
 								<td>{model.get('file_meta.name')}</td>
 								<td><a href={model.get('link')}>download</a></td>
 								<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
-								<td>{model.get('file_meta.type')}</td>
+								<td title={model.get('file_meta.type')}>{model.get('file_meta.ext')}</td>
 								<td title={Drop.Helpers.formatDateTime(model.get('published_at'))}>{Drop.Helpers.formatRelativeTime(model.get('published_at'))}</td>
 								<td><DeleteFileButton model={model} name={model.get('file_meta.name')} /></td>
 							</tr>
