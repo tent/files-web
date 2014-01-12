@@ -40,7 +40,14 @@ Drop.Views.DragFileInput = React.createClass({
 			return;
 		}
 
-		this.props.fileHandler(files[0]);
+		var file = files[0];
+
+		if (!file || !file.size) {
+			this.props.errorHandler("Invalid file!");
+			return;
+		}
+
+		this.props.fileHandler(file);
 	},
 
 	render: function () {
