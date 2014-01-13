@@ -99,6 +99,8 @@ Drop.Views.Upload = React.createClass({
 		this.props.model.set('file', file);
 
 		this.setState({error: null});
+
+		this.refs.name.getDOMNode().value = file.name || '';
 	},
 
 	handlePublicChanged: function (e) {
@@ -121,7 +123,7 @@ Drop.Views.Upload = React.createClass({
 
 				<label>
 					Name:&nbsp;
-					<input type='text' ref='name' placeholder={this.props.model.get('file.name') || '' } />
+					<input type='text' ref='name' />
 				</label>
 
 				<div className='clearfix permissions-radio-group'>
