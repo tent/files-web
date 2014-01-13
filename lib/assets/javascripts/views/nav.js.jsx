@@ -3,7 +3,7 @@
 (function () {
 
 	var navItems = [
-		{ fragment: "manage", iconName: "clock", name: "Manage" }
+		{ fragment: "files", iconName: "files", name: "Files" }
 	];
 
 	Drop.Views.AppNav = React.createClass({
