@@ -76,6 +76,8 @@ module Drop
       def content_security_policy
         [
           "default-src 'self'",
+          "frame-ancestors 'none'",
+          "frame-src 'none'",
           "object-src 'none'",
           "img-src *",
           "connect-src *"
