@@ -23,7 +23,45 @@ All ENV vars must be set at compile time and when running the ruby app (for deve
 The app requires a JSON config as shown below.
 
 ```json
-{}
+{
+  "credentials": {
+    "id": "...",
+    "hawk_key": "...",
+    "hawk_algorithm": "..."
+  },
+  "meta": {
+    "content": {
+      "entity": "...",
+      "profile": {},
+      "servers": [
+        {
+          "version": "0.3",
+          "preference": 0,
+          "urls": {
+            "oauth_auth": "...",
+            "oauth_token": "...",
+            "posts_feed": "...",
+            "post": "...",
+            "new_post": "...",
+            "post_attachment": "...",
+            "attachment": "...",
+            "batch": "...",
+            "server_info": "...",
+            "discover": "..."
+          }
+        }
+      ]
+    },
+    "entity": "...",
+    "id": "...",
+    "published_at": ...,
+    "type": "https://tent.io/types/meta/v0#",
+    "version": {
+      "id": "...",
+      "published_at": ...
+    }
+  }
+}
 ```
 
 #### Development
