@@ -48,7 +48,7 @@ Drop.Views.FileShareButton = React.createClass({
 			var duration = moment.duration(this.state.ttl, 'seconds');
 			var expiresIn = '';
 			if (this.props.file.get('permissions.public') === false) {
-				expiresIn = <div>Expires in {duration.asHours()} hours.</div>;
+				expiresIn = <div>Link expires in {duration.asHours()} hours.</div>;
 			}
 			shareBox = (
 				<div className='share-box'>
