@@ -22,6 +22,10 @@ module Drop
     self.settings[:display_url] = options[:display_url] || ENV['APP_DISPLAY_URL'] || 'https://github.com/tent/drop'
 
     ##
+    # Sentry settings
+    self.settings[:sentry_url] = options[:sentry_url] || ENV['SENTRY_URL']
+
+    ##
     # App settings
     self.settings[:url]                  = options[:url]                  || ENV['URL']
     self.settings[:path_prefix]          = options[:path_prefix]          || ENV['PATH_PREFIX']

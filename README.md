@@ -14,6 +14,7 @@ ENV                  | Required | Description
 `ASSET_CACHE_DIR`    | Optional | Filesystem path used by Sprockets to cache compiled assets.
 `APP_ASSET_MANIFEST` | Optional | Filesystem path to manifest.json.
 `SESSION_SECRET`     | Optional | Set unless you want to login every time the app restarts.
+`SENTRY_URL`		  	 | Optional | Set if you want to track errors with [Sentry](https://www.getsentry.com).
 
 All ENV vars must be set at compile time and when running the ruby app (for development purposes only).
 
