@@ -28,16 +28,11 @@ GIT
     marbles-js (0.0.3)
 
 GIT
-  remote: git://github.com/tent/icing.git
-  revision: 884373e4ceff5d95aedc8483f6330365de0dc915
+  remote: git://github.com/jvatic/raven-js-sprockets.git
+  revision: 4e8688e498d56fccf6ae58f44cda7f9812c1ad9a
   branch: master
   specs:
-    icing (0.0.1)
-      compass (~> 0.12.2)
-      sass
-      sprockets (~> 2.0)
-      sprockets-helpers (~> 0.2)
-      sprockets-sass (~> 0.5)
+    raven-js (0.0.3)
 
 GIT
   remote: git://github.com/jvatic/react-jsx-sprockets.git
@@ -56,6 +51,18 @@ GIT
   branch: master
   specs:
     hawk-auth (0.2.4)
+
+GIT
+  remote: git://github.com/tent/icing.git
+  revision: 884373e4ceff5d95aedc8483f6330365de0dc915
+  branch: master
+  specs:
+    icing (0.0.1)
+      compass (~> 0.12.2)
+      sass
+      sprockets (~> 2.0)
+      sprockets-helpers (~> 0.2)
+      sprockets-sass (~> 0.5)
 
 GIT
   remote: git://github.com/tent/marbles-tent-client-js.git
@@ -213,6 +220,7 @@ DEPENDENCIES
   puma
   rack-putty!
   rake
+  raven-js!
   react-jsx-sprockets!
   sass
   sprockets (~> 2.0)!
