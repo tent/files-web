@@ -53,7 +53,7 @@ Drop.Views.DragFileInput = React.createClass({
 	render: function () {
 		return (
 			<div className={'drop-zone ' + (this.state.active ? 'active' : '')} onDragOver={this.handleDragOver} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
-				{this.props.file ? this.props.file.name : this.props.children}
+				{this.props.file ? this.props.fileSelectedText : this.props.children}
 			</div>
 		);
 	}
