@@ -46,11 +46,15 @@ Drop.Views.FileShareButton = React.createClass({
 		var shareBox = '';
 		if (this.state.active) {
 			var duration = moment.duration(this.state.ttl, 'seconds');
+			var expiresIn = '';
+			if (this.props.file.get('permissions.public') === false) {
+				expiresIn = <div>Expires in {duration.asHours()} hours.</div>;
+			}
 			shareBox = (
 				<div className='share-box'>
 					<input ref='url' className='float-left url' type='text' value={this.props.file.getShareLink(this.state.ttl)} onClick={this.handleURLFocus} />
 					<i className='picto picto-remove-oct-fill clickable float-left' onClick={this.handleCloseShareBox}></i>
-					<div>Expires in {duration.asHours()} hours.</div>
+					{expiresIn}
 				</div>
 			);
 		}
