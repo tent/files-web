@@ -8,7 +8,7 @@ Drop.Views.FileDownloadButton = React.createClass({
 				url;
 		if (file.get('permissions.public') === false) {
 			// private
-			url = file.getSignedLink(60); // valid for 60 seconds
+			url = file.getShareLink(60); // valid for 60 seconds
 		} else {
 			// public
 			url = file.get('link');
