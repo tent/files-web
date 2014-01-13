@@ -61,7 +61,7 @@ Drop.Views.FileShareButton = React.createClass({
 		return (
 			<div className='share-container'>
 				{shareBox}
-				<a className='icon' href='#share' title='Share' onClick={this.handleClick}><i className='picto picto-share'></i></a>
+				<a className='icon' href='#share' title='Get link' onClick={this.handleClick}><i className='picto picto-share'></i></a>
 			</div>
 		);
 	}
