@@ -20,6 +20,7 @@ ENV                    | Required | Description
 `SIGNOUT_URL`          | Optional | URL where sign-out action is located. Defaults to `/signout`.
 `SIGNOUT_REDIRECT_URL` | Optional | URL to redirect to after signing out.
 `SIGNIN_URL`           | Optional | URL accepting a POST request with form encoded `username` and `passphrase` to authorize `config.json`.
+`ALERT_DISMISS_URL`    | Required | URL that accepts a DELETE request. `:id` is replaced with the id of the alert. Expects 200 with no body for success.
 
 All ENV vars must be set at compile time and when running the ruby app (for development purposes only).
 
