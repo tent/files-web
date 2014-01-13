@@ -12,8 +12,14 @@
 		getInitialState: function () {
 			return {
 				navItems: navItems,
-				activeFragment: null
+				activeFragment: null,
+				menuActive: false
 			};
+		},
+
+		handleMenuToggleClick: function (e) {
+			e.preventDefault();
+			this.setState({ menuActive: !this.state.menuActive });
 		},
 
 		render: function () {
@@ -23,8 +29,8 @@
 			}.bind(this));
 			return (
 				<div>
-					<a className="menu-switch js-menu-switch">Menu</a>
-					<ul className="unstyled app-nav-list">
+					<a className="menu-switch js-menu-switch" onClick={this.handleMenuToggleClick}>Menu</a>
+					<ul className={"unstyled app-nav-list"+ (this.state.menuActive ? ' show' : '')}>
 						{navItems}
 					</ul>
 				</div>
