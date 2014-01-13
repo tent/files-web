@@ -19,7 +19,7 @@ Drop.Views.FileDownloadButton = React.createClass({
 
 	render: function () {
 		return (
-			<a className='icon' href={this.props.file.get('link')} title='Download' onClick={this.handleClick}><i className='picto picto-file-open'></i></a>
+			<a className='icon' href={this.props.file.get('link')} title='Download' onClick={this.handleClick}><i className='picto picto-file-down'></i></a>
 		);
 	}
 });
