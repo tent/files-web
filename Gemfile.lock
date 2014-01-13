@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: git://github.com/jvatic/marbles-js.git
-  revision: aa91e7df99c271a9c2aa17a1e50f654491435c01
+  revision: d19ecfc7aafc20a4873846cc93c2ba8df0db5094
   branch: redesign
   specs:
     marbles-js (0.0.3)
@@ -51,11 +51,27 @@ GIT
       yajl-ruby
 
 GIT
+  remote: git://github.com/tent/hawk-ruby.git
+  revision: ad6be56282aa77870db36313bdc38f0e139cd78e
+  branch: master
+  specs:
+    hawk-auth (0.2.4)
+
+GIT
   remote: git://github.com/tent/marbles-tent-client-js.git
-  revision: 1b51240ccfee0637a653a3e3697ff5e4522b6098
+  revision: dd4a26be2bc46f97e44bec5bb83a0167cc867373
   branch: redesign
   specs:
     marbles-tent-client-js (0.0.1)
+
+GIT
+  remote: git://github.com/tent/omniauth-tent.git
+  revision: 4143813b2b8848acc2c289a28c2f2d1ef7a28c4a
+  branch: master
+  specs:
+    omniauth-tent (0.2.1)
+      omniauth (~> 1.1.1)
+      tent-client
 
 GIT
   remote: git://github.com/tent/rack-putty.git
@@ -64,6 +80,19 @@ GIT
   specs:
     rack-putty (0.0.1)
       rack-mount (~> 0.8.3)
+
+GIT
+  remote: git://github.com/tent/tent-client-ruby.git
+  revision: 1f9259f84d6602ca5739abebb9b11b734c3192f4
+  branch: master
+  specs:
+    tent-client (0.2.1)
+      faraday (= 0.8.4)
+      faraday_middleware (= 0.8.8)
+      faraday_middleware-multi_json
+      hawk-auth
+      nokogiri
+      yajl-ruby
 
 GIT
   remote: git://github.com/titanous/asset_sync.git
@@ -99,6 +128,13 @@ GEM
       sass (~> 3.1)
     excon (0.31.0)
     execjs (2.0.2)
+    faraday (0.8.4)
+      multipart-post (~> 1.1)
+    faraday_middleware (0.8.8)
+      faraday (>= 0.7.4, < 0.9)
+    faraday_middleware-multi_json (0.0.5)
+      faraday_middleware
+      multi_json
     fog (1.19.0)
       builder
       excon (~> 0.31.0)
@@ -111,6 +147,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     fssm (0.2.10)
+    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
     json (1.8.1)
@@ -119,11 +156,15 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
@@ -156,12 +197,14 @@ PLATFORMS
 DEPENDENCIES
   asset_sync!
   coffee-script
+  hawk-auth!
   icing!
   lodash-assets!
   marbles-js!
   marbles-tent-client-js!
   mime-types
   mimetype-fu
+  omniauth-tent!
   puma
   rack-putty!
   rake
@@ -169,5 +212,6 @@ DEPENDENCIES
   sass
   sprockets (~> 2.0)!
   sprockets-rainpress
+  tent-client!
   uglifier
   yajl-ruby

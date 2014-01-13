@@ -17,6 +17,10 @@ gem 'sprockets', '~> 2.0', :git => 'git://github.com/jvaill/sprockets.git', :bra
 gem 'lodash-assets', :git => 'git://github.com/jvatic/lodash-assets.git', :branch => 'master'
 gem 'react-jsx-sprockets', :git => 'git://github.com/jvatic/react-jsx-sprockets.git', :branch => 'master'
 
+gem 'tent-client', :git => 'git://github.com/tent/tent-client-ruby.git', :branch => 'master'
+gem 'hawk-auth', :git => 'git://github.com/tent/hawk-ruby.git', :branch => 'master'
+gem 'omniauth-tent', :git => 'git://github.com/tent/omniauth-tent.git', :branch => 'master'
+
 group :development, :assets do
   gem 'asset_sync', :git => 'git://github.com/titanous/asset_sync.git', :branch => 'fix-mime'
   gem 'mime-types'

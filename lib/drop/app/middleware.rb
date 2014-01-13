@@ -42,6 +42,11 @@ module Drop
         data
       end
 
+      def current_user(env)
+        return unless id = env['rack.session']['current_user_id']
+        env['current_user'] ||= Model::User.find(id)
+      end
+
     end
   end
 end
