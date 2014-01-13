@@ -45,12 +45,14 @@
 
 		handleClick: function (e) {
 			e.preventDefault();
-			Marbles.history.navigate(this.props.fragment, { trigger: true });
+			if (this.props.authenticated) {
+				Marbles.history.navigate(this.props.fragment, { trigger: true });
+			}
 		},
 
 		render: function () {
 			return (
-				<a className={this.props.active ? 'active' : ''} href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
+				<a className={(this.props.active ? 'active' : '') + (this.props.authenticated ? '' : ' disabled') } href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
 					<li>
 						<i className={"picto picto-" + this.props.iconName}></i>{this.props.name}
 					</li>
