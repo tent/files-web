@@ -117,14 +117,14 @@ module Drop
       post '/signout' do |b|
         b.use Signout
       end
-    end
 
-    get '/config.json' do |b|
-      b.use AccessControl, :allow_credentials => true
-      b.use CacheControl, :value => 'no-cache'
-      b.use CacheControl, :value => 'private, max-age=600'
-      b.use Authentication, :redirect => false
-      b.use RenderView, :view => :'config.json', :content_type => "application/json"
+      get '/config.json' do |b|
+        b.use AccessControl, :allow_credentials => true
+        b.use CacheControl, :value => 'no-cache'
+        b.use CacheControl, :value => 'private, max-age=600'
+        b.use Authentication, :redirect => false
+        b.use RenderView, :view => :'config.json', :content_type => "application/json"
+      end
     end
 
     get '*' do |b|
