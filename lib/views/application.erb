@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Drop</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link href="<%= asset_path("icing.css") %>" rel="stylesheet">
+    <link href="<%= asset_path("application.css") %>" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class='v-navbar-fixed-left'>
+      <%= erb :global_nav %>
+    </div>
+
+    <div id='main-nav'>
+      <a class="menu-switch js-menu-switch">Menu</a>
+      <%= erb :nav %>
+    </div>
+
+    <div id='main-container' class='container'>
+      <div id='main' class='pull-left'>
+        <%= yield if block_given? %>
+      </div>
+    </div>
+
+    <% unless block_given? %>
+      <script type='application/javascript' src='<%= asset_path('lodash.js') %>'></script>
+      <script type='application/javascript' src='<%= asset_path('react.js') %>'></script>
+      <script type='application/javascript' src='<%= asset_path('marbles.js') %>'></script>
+      <script type='application/javascript' src='<%= asset_path('application.js') %>'></script>
+    <% end %>
+  </body>
+</html>
