@@ -43,6 +43,8 @@ module Drop
 
     self.settings[:asset_manifest] = Yajl::Parser.parse(File.read(ENV['APP_ASSET_MANIFEST'])) if ENV['APP_ASSET_MANIFEST'] && File.exists?(ENV['APP_ASSET_MANIFEST'])
 
+    self.settings[:global_nav_config] = Yajl::Parser.parse(File.read(ENV['GLOBAL_NAV_CONFIG'])) if ENV['GLOBAL_NAV_CONFIG'] && File.exists?(ENV['GLOBAL_NAV_CONFIG'])
+
     # Default asset root
     self.settings[:asset_root] ||= "/assets"
 
