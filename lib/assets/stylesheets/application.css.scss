@@ -1,6 +1,10 @@
 @import 'icing/settings';
 @import 'icing/common';
 
+#main-container {
+  overflow: visible;
+}
+
 .fa.nav-icon {
   line-height: 1;
 }
