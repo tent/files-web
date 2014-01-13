@@ -7,6 +7,7 @@ module Drop
     require 'drop/app/serialize_response'
     require 'drop/app/asset_server'
     require 'drop/app/render_view'
+    require 'drop/app/authentication'
 
     AssetServer.asset_roots = [
       File.expand_path('../../assets', __FILE__), # lib/assets
@@ -90,15 +91,42 @@ module Drop
       b.use AssetServer
     end
 
+    unless Drop.settings[:skip_authentication]
+      match %r{\A/auth/tent(/callback)?} do |b|
+        b.use OmniAuth::Builder do
+          provider :tent, {
+            :get_app => AppLookup,
+            :on_app_created => AppCreate,
+            :app => {
+              :name => Drop.settings[:name],
+              :description => Drop.settings[:description],
+              :url => Drop.settings[:display_url],
+              :redirect_uri => Drop.settings[:redirect_uri],
+              :read_types => Drop.settings[:read_types],
+              :write_types => Drop.settings[:write_types],
+              :scopes => Drop.settings[:scopes]
+            }
+          }
+        end
+        b.use OmniAuthCallback
+      end
+
+      post '/signout' do |b|
+        b.use Signout
+      end
+    end
+
     get '/config.json' do |b|
       b.use AccessControl, :allow_credentials => true
       b.use CacheControl, :value => 'no-cache'
       b.use CacheControl, :value => 'private, max-age=600'
+      b.use Authentication, :redirect => false
       b.use RenderView, :view => :'config.json', :content_type => "application/json"
     end
 
     get '*' do |b|
       b.use ContentSecurityPolicy
+      b.use Authentication
       b.use MainApplication
       b.use RenderView
     end

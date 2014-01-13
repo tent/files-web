@@ -24,6 +24,11 @@ module Drop
           @block.call(self)
         end
 
+        def current_user
+          return unless (env['rack.session'] || {})['current_user_id']
+          env['current_user'] ||= Model::User.find(env['rack.session']['current_user_id'])
+        end
+
         def sprockets_environment
           AssetServer.sprockets_environment
         end
