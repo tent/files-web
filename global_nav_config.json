@@ -1,0 +1,8 @@
+{
+	"items": [
+		{ "name": "Micro"  , "icon_class": "app-icon-tentstatus" , "url": "https://micro.cupcake.io"        , "selected": false } ,
+		{ "name": "Search" , "icon_class": "app-icon-search"     , "url": "https://micro.cupcake.io/search" , "selected": false } ,
+		{ "name": "Files"  , "icon_class": "picto picto-file"    , "url": "https://files.cupcake.io"        , "selected": true  } ,
+		{ "name": "Admin"  , "icon_class": "app-icon-settings"   , "url": "https://admin.cupcake.io"        , "selected": false }
+	]
+}
