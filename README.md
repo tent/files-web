@@ -8,6 +8,7 @@ ENV                    | Required | Description
 ---------------------- | -------- | -----------
 `URL`                  | Required | URL the app is mounted at.
 `JSON_CONFIG_URL`      | Required | URL of the JSON config. The `Access-Control-Allow-Credentials` header must be set. Must return a 401 status if auth required via `SIGNIN_URL`.
+`GLOBAL_NAV_CONFIG`    | Optional | Filesystem path to JSON file containing the global nav config as described below.
 `PATH_PREFIX`          | Optional | If the app is not mounted at the domain root, you need to specify the path prefix.
 `ASSETS_DIR`           | Optional | Directory assets should be compiled to (defaults to `public/assets`).
 `ASSET_ROOT`           | Optional | URL prefix of where assets are located (defaults to `/assets`, e.g. an asset named `foo` would be found at `/assets/foo`).
@@ -65,6 +66,18 @@ The app requires a JSON config as shown below.
       "published_at": ...
     }
   }
+}
+```
+
+#### Global nav config
+
+If `GLOBAL_NAV_CONFIG` is set, this is the format the app expects to find:
+
+```json
+{
+	"items": [
+		{ "name": "Drop", "icon_class": "fa fa-file", "url": "http://localhost:9292", "selected": true }
+	]
 }
 ```
 

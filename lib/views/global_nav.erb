@@ -1,7 +1,15 @@
 <ul class='unstyled custom-container'>
-  <li class='nav-selected'>
-    <a href='<%= Drop.settings[:url] %>' title='Drop'><div class='nav-icon fa fa-file-o icon-2x'></div></a>
-  </li>
+  <% if Drop.settings[:global_nav_config] %>
+    <% Drop.settings[:global_nav_config]['items'].to_a.each do |item| %>
+      <li <% if item['selected'] %>class='nav-selected'<% end %>>
+        <a href='<%= item['url'] %>' title='<%= item['name'] %>'><div class='nav-icon icon-2x <%= item['icon_class'] %>'></div></a>
+      </li>
+    <% end %>
+  <% else %>
+    <li class='nav-selected'>
+      <a href='<%= Drop.settings[:url] %>' title='Drop'><div class='nav-icon fa fa-file-o icon-2x'></div></a>
+    </li>
+  <% end %>
 
   <li id='auth-button'>
   </li>
