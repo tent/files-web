@@ -53,18 +53,6 @@ GIT
     hawk-auth (0.2.4)
 
 GIT
-  remote: git://github.com/tent/icing.git
-  revision: 710782e8368a68325091bf0a6bb7a4751474e911
-  branch: master
-  specs:
-    icing (0.0.1)
-      compass (~> 0.12.2)
-      sass
-      sprockets (~> 2.0)
-      sprockets-helpers (~> 0.2)
-      sprockets-sass (~> 0.5)
-
-GIT
   remote: git://github.com/tent/marbles-tent-client-js.git
   revision: c6c26eeddb4824b306f6901efc3eaa21f4562f76
   branch: redesign
@@ -112,7 +100,7 @@ GIT
 
 GIT
   remote: git@git.cupcake.io:c/icing.git
-  revision: b376fcc1c5bfe18cdd96acd5ddffa485d84015ae
+  revision: a1f9994d78b8b059a7fddbcc2774888c63f5bf95
   branch: master
   specs:
     icing (0.0.1)
