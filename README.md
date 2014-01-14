@@ -131,3 +131,5 @@ A single attachment is required.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+Note that the actual Javascript application is located in `lib/assets/javascripts`. [Sprockets](https://github.com/sstephenson/sprockets) is used to compile and concatenate files.
