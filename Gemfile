@@ -16,7 +16,6 @@ gem 'icing', :git => 'git@git.cupcake.io:c/icing.git', :branch => 'master'
 gem 'sprockets', '~> 2.0', :git => 'git://github.com/jvaill/sprockets.git', :branch => 'master'
 gem 'lodash-assets', :git => 'git://github.com/jvatic/lodash-assets.git', :branch => 'master'
 gem 'react-jsx-sprockets', :git => 'git://github.com/jvatic/react-jsx-sprockets.git', :branch => 'master'
-gem 'therubyracer'
 gem 'raven-js', :git => 'git://github.com/jvatic/raven-js-sprockets.git', :branch => 'master'
 
 gem 'tent-client', :git => 'git://github.com/tent/tent-client-ruby.git', :branch => 'master'
