@@ -8,6 +8,10 @@ module Drop
       icing.css
       application.css
       application.js
+      moment.js
+      react.js
+      react-infinite-scroll.js
+      raven.js
     ).freeze
 
     attr_accessor :sprockets_environment, :assets_dir, :layout_dir, :layout_path, :layout_env
