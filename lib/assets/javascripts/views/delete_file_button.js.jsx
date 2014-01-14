@@ -13,7 +13,7 @@ Drop.Views.DeleteFileButton = React.createClass({
 
 	render: function () {
 		return (
-			<a href='#' className='icon' title={'Delete ' + this.props.name} onClick={this.handleClick}><i className='picto picto-trash'></i></a>
+			<a href='#' className='icon' title={'Delete ' + this.props.name} onClick={this.handleClick}><i className='fa fa-trash-o'></i></a>
 		);
 	}
 });

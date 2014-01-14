@@ -48,7 +48,10 @@ Drop.Views.FileAlerts = React.createClass({
 	render: function () {
 		if (this.state.msg) {
 			return (
-				<div className={'alert alert-'+ this.state.type} onClick={this.handleClick}>{this.state.msg}</div>
+				<div className={'alert alert-'+ this.state.type} onClick={this.handleClick}>
+					<button type="button" className="close">&times;</button>
+					{this.state.msg}
+				</div>
 			);
 		} else {
 			return <div />;

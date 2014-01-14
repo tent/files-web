@@ -1,9 +1,12 @@
 @import 'icing/settings';
 @import 'icing/common';
-@import 'pictos';
 
 #main-container {
   overflow: visible;
+}
+
+.fa.nav-icon {
+  line-height: 1;
 }
 
 .drop-zone {

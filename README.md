@@ -77,7 +77,7 @@ If `GLOBAL_NAV_CONFIG` is set, this is the format the app expects to find:
 ```json
 {
 	"items": [
-		{ "name": "Drop", "icon_class": "picto picto-file", "url": "http://localhost:9292", "selected": true }
+		{ "name": "Drop", "icon_class": "fa fa-file", "url": "http://localhost:9292", "selected": true }
 	]
 }
 ```
