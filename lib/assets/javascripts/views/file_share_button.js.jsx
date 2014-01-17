@@ -16,10 +16,11 @@ Drop.Views.FileShareButton = React.createClass({
 			this.replaceState(this.getInitialState());
 		} else {
 			this.setState({ active: true });
+			this.shortenURL();
 		}
 	},
 
-	updateURL: function () {
+	shortenURL: function () {
 		this.props.file.getShareLink(this.state.ttl, {
 			short: true,
 			callback: function (url) {
@@ -29,7 +30,9 @@ Drop.Views.FileShareButton = React.createClass({
 	},
 
 	componentDidMount: function () {
-		this.updateURL();
+		this.setState({
+			url: this.props.file.getShareLink(this.state.ttl)
+		});
 	},
 
 	handleCloseShareBox: function (e) {
