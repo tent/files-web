@@ -4,7 +4,8 @@ Drop.Views.FileShareButton = React.createClass({
 	getInitialState: function () {
 		return {
 			active: false,
-			ttl: moment.duration(1, 'day').asSeconds()
+			ttl: moment.duration(1, 'day').asSeconds(),
+			url: null
 		};
 	},
 
@@ -16,6 +17,19 @@ Drop.Views.FileShareButton = React.createClass({
 		} else {
 			this.setState({ active: true });
 		}
+	},
+
+	updateURL: function () {
+		this.props.file.getShareLink(this.state.ttl, {
+			short: true,
+			callback: function (url) {
+				this.setState({ url: url });
+			}.bind(this)
+		});
+	},
+
+	componentDidMount: function () {
+		this.updateURL();
 	},
 
 	handleCloseShareBox: function (e) {
@@ -52,7 +66,7 @@ Drop.Views.FileShareButton = React.createClass({
 			}
 			shareBox = (
 				<div className='share-box'>
-					<input ref='url' className='float-left url' type='text' value={this.props.file.getShareLink(this.state.ttl)} onClick={this.handleURLFocus} />
+					<input ref='url' className='float-left url' type='text' value={this.state.url || ''} onClick={this.handleURLFocus} />
 					<i className='fa fa-times-circle clickable float-left' onClick={this.handleCloseShareBox}></i>
 					{expiresIn}
 				</div>

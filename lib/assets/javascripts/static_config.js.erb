@@ -10,6 +10,8 @@ Drop.config = {
   SIGNOUT_URL: <%= Yajl::Encoder.encode(Drop.settings[:signout_url]) %>,
   SIGNOUT_REDIRECT_URL: <%= Yajl::Encoder.encode(Drop.settings[:signout_redirect_url]) %>,
 
+  SHORTNER_URL: <%= Yajl::Encoder.encode(Drop.settings[:shortner_url]) %>,
+
   POSTS_PER_PAGE: 20,
   POST_TYPES: {
     file: "https://tent.io/types/file/v0#"

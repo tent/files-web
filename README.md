@@ -20,6 +20,7 @@ ENV                    | Required | Description
 `SIGNOUT_URL`          | Optional | URL where sign-out action is located. Defaults to `/signout`.
 `SIGNOUT_REDIRECT_URL` | Optional | URL to redirect to after signing out.
 `SIGNIN_URL`           | Optional | URL accepting a POST request with form encoded `username` and `passphrase` to authorize `config.json`.
+`SHORTNER_URL`         | Optional | URL accepting a JSON POST request with `{"long_url": "https://..."}` and returning the same object with an added `short_url` member. This URL must have CORS headers setup.
 
 All ENV vars must be set at compile time and when running the ruby app (for development purposes only).
 
