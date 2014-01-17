@@ -37,7 +37,7 @@ module Drop
     self.settings[:signout_url]          = options[:signout_url]          || ENV['SIGNOUT_URL']
     self.settings[:signout_redirect_url] = options[:signout_redirect_url] || ENV['SIGNOUT_REDIRECT_URL']
     self.settings[:alert_dismiss_url]    = options[:alert_dismiss_url]    || ENV['ALERT_DISMISS_URL']
-    self.settings[:shortner_url]         = options[:shortner_url]         || ENV['SHORTNER_URL']
+    self.settings[:shortener_url]        = options[:shortener_url]        || ENV['SHORTENER_URL']
 
     unless settings[:url]
       raise ConfigurationError.new("Missing url option, you need to set URL")

@@ -21,7 +21,7 @@ ENV                    | Required | Description
 `SIGNOUT_REDIRECT_URL` | Optional | URL to redirect to after signing out.
 `SIGNIN_URL`           | Optional | URL accepting a POST request with form encoded `username` and `passphrase` to authorize `config.json`.
 `ALERT_DISMISS_URL`    | Required | URL that accepts a DELETE request. `:id` is replaced with the id of the alert. Expects 200 with no body for success.
-`SHORTNER_URL`         | Optional | URL accepting a JSON POST request with `{"long_url": "https://..."}` and returning the same object with an added `short_url` member. This URL must have CORS headers setup.
+`SHORTENER_URL`        | Optional | URL accepting a JSON POST request with `{"long_url": "https://..."}` and returning the same object with an added `short_url` member. This URL must have CORS headers setup.
 
 All ENV vars must be set at compile time and when running the ruby app (for development purposes only).
 
