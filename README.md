@@ -1,4 +1,4 @@
-# Drop
+# Files
 
 ## Setup
 
@@ -21,6 +21,7 @@ ENV                    | Required | Description
 `SIGNOUT_REDIRECT_URL` | Optional | URL to redirect to after signing out.
 `SIGNIN_URL`           | Optional | URL accepting a POST request with form encoded `username` and `passphrase` to authorize `config.json`.
 `ALERT_DISMISS_URL`    | Required | URL that accepts a DELETE request. `:id` is replaced with the id of the alert. Expects 200 with no body for success.
+`SHORTNER_URL`         | Optional | URL accepting a JSON POST request with `{"long_url": "https://..."}` and returning the same object with an added `short_url` member. This URL must have CORS headers setup.
 
 All ENV vars must be set at compile time and when running the ruby app (for development purposes only).
 
@@ -77,7 +78,7 @@ If `GLOBAL_NAV_CONFIG` is set, this is the format the app expects to find:
 ```json
 {
 	"items": [
-		{ "name": "Drop", "icon_class": "fa fa-file", "url": "http://localhost:9292", "selected": true }
+		{ "name": "Files", "icon_class": "fa fa-file", "url": "http://localhost:9292", "selected": true }
 	]
 }
 ```
@@ -132,3 +133,5 @@ A single attachment is required.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+Note that the actual Javascript application is located in `lib/assets/javascripts`. [Sprockets](https://github.com/sstephenson/sprockets) is used to compile and concatenate files.
