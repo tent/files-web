@@ -75,6 +75,7 @@ Drop.Views.Manage = React.createClass({
 							<td><FileShareButton file={model} /></td>
 							<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
 							<td title={model.get('file_meta.type')}>{model.get('file_meta.ext')}</td>
+							<td>{Drop.Helpers.formatBoolean(model.get('permissions.public') === false)}</td>
 							<td><RelativeTimestamp milliseconds={model.get('published_at')} /></td>
 							<td><DeleteFileButton model={model} name={model.get('file_meta.name')} /></td>
 						</tr>
@@ -94,6 +95,7 @@ Drop.Views.Manage = React.createClass({
 							<th></th>
 							<th>Size</th>
 							<th>Type</th>
+							<th>Public</th>
 							<th>Date</th>
 							<th></th>
 						</tr>
