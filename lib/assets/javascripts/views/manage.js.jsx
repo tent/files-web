@@ -70,6 +70,7 @@ Drop.Views.Manage = React.createClass({
 				} else {
 					rows.push(
 						<tr key={model.cid}>
+							<td><i className={'fa fa-'+ (model.get('permissions.public') === false ? 'lock' : 'unlock')} /></td>
 							<td>{model.get('file_meta.name')}</td>
 							<td><FileDownloadButton file={model} /></td>
 							<td><FileShareButton file={model} /></td>
@@ -89,6 +90,7 @@ Drop.Views.Manage = React.createClass({
 				<table className='table table-striped manage-uploads-table'>
 					<thead>
 						<tr>
+							<th></th>
 							<th>Filename</th>
 							<th></th>
 							<th></th>
