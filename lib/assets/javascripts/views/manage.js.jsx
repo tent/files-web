@@ -90,7 +90,7 @@ Drop.Views.Manage = React.createClass({
 				<table className='table table-striped manage-uploads-table'>
 					<thead>
 						<tr>
-                            <th></th>
+							<th></th>
 							<th>Filename</th>
 							<th></th>
 							<th></th>
