@@ -96,7 +96,6 @@ Drop.Views.Manage = React.createClass({
 							<th></th>
 							<th>Size</th>
 							<th>Type</th>
-							<th>Public</th>
 							<th>Date</th>
 							<th></th>
 						</tr>
