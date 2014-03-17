@@ -70,12 +70,12 @@ Drop.Views.Manage = React.createClass({
 				} else {
 					rows.push(
 						<tr key={model.cid}>
+							<td><i className={'fa fa-'+ (model.get('permissions.public') === false ? 'lock' : 'unlock')} /></td>
 							<td>{model.get('file_meta.name')}</td>
 							<td><FileDownloadButton file={model} /></td>
 							<td><FileShareButton file={model} /></td>
 							<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
 							<td title={model.get('file_meta.type')}>{model.get('file_meta.ext')}</td>
-							<td>{Drop.Helpers.formatBoolean(model.get('permissions.public') === false)}</td>
 							<td><RelativeTimestamp milliseconds={model.get('published_at')} /></td>
 							<td><DeleteFileButton model={model} name={model.get('file_meta.name')} /></td>
 						</tr>
@@ -90,6 +90,7 @@ Drop.Views.Manage = React.createClass({
 				<table className='table table-striped manage-uploads-table'>
 					<thead>
 						<tr>
+                            <th></th>
 							<th>Filename</th>
 							<th></th>
 							<th></th>
