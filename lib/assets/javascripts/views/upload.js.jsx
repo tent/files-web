@@ -7,7 +7,7 @@ Drop.Views.Upload = React.createClass({
 		return {
 			error: null,
 			saving: false,
-			maxFileSize: 10000000 // 10MB
+			maxFileSize: 100000000 // 100MB
 		};
 	},
 
