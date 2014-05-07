@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: git@git.cupcake.io:c/apps-bar-web.git
-  revision: b23fec6d7705bb836d1e7215398283132a283172
+  revision: 0a5f831a62a16625b6432f915fbb76e5ee8821c9
   branch: master
   specs:
     cupcake-apps-bar (0.0.1)
