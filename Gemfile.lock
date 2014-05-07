@@ -107,7 +107,7 @@ GIT
 
 GIT
   remote: git@git.cupcake.io:c/icing.git
-  revision: a04471798e514640095ceeec4704ac1c3c990c35
+  revision: 9814336a4d37e5404ee068bdb8781dd7903ddf7e
   branch: master
   specs:
     icing (0.0.1)
