@@ -99,6 +99,13 @@ GIT
       fog
 
 GIT
+  remote: git@git.cupcake.io:c/apps-bar-web.git
+  revision: b23fec6d7705bb836d1e7215398283132a283172
+  branch: master
+  specs:
+    cupcake-apps-bar (0.0.1)
+
+GIT
   remote: git@git.cupcake.io:c/icing.git
   revision: a04471798e514640095ceeec4704ac1c3c990c35
   branch: master
@@ -204,6 +211,7 @@ PLATFORMS
 DEPENDENCIES
   asset_sync!
   coffee-script
+  cupcake-apps-bar!
   hawk-auth!
   icing!
   lodash-assets!

@@ -77,7 +77,7 @@ module Drop
         [
           "default-src 'self'",
           "frame-ancestors 'none'",
-          "frame-src 'none'",
+          "frame-src #{Drop.settings[:cupcake_apps_bar_url].sub(/\A(https?:\/\/[^\/]+).*?\Z/, '\1')} 'self'",
           "object-src 'none'",
           "img-src *",
           "connect-src *"

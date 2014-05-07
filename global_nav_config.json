@@ -1,9 +1,0 @@
-{
-	"items": [
-		{ "name": "Micro"     , "url": "https://micro.cupcake.io"        , "icon_class": "app-icon-tentstatus" , "selected": false } ,
-		{ "name": "Search"    , "url": "https://micro.cupcake.io/search" , "icon_class": "app-icon-search"     , "selected": false } ,
-		{ "name": "Messenger" , "url": "https://messenger.cupcake.io"    , "icon_class": "fa fa-envelope"      , "selected": false } ,
-		{ "name": "Files"     , "url": "https://files.cupcake.io"        , "icon_class": "picto picto-file"    , "selected": true  } ,
-		{ "name": "Admin"     , "url": "https://admin.cupcake.io"        , "icon_class": "app-icon-settings"   , "selected": false }
-	]
-}

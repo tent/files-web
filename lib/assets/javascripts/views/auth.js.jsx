@@ -82,7 +82,7 @@ Drop.Views.Auth = React.createClass({
 
 		return (
 			<div>
-				<h2 className='page-header'>Sign in</h2>
+				<h2 className='page-header'>Log in</h2>
 
 				<form className='signin-form' onSubmit={this.handleSubmit}>
 					{alertEl}
@@ -96,14 +96,14 @@ Drop.Views.Auth = React.createClass({
 					</div>
 
 					<div className='control-group' className={ this.classNameForField('passphrase') }>
-						<label>Password</label>
+						<label>Passphrase</label>
 						<div className='input-append'>
 							<input ref='passphrase' name='passphrase' type='password' />
 							<span className='add-on'><i></i></span>
 						</div>
 					</div>
 
-					<button className='btn btn-primary' type='submit' disabled={!this.state.submitEnabled}>Sign in</button>
+					<button className='btn btn-primary' type='submit' disabled={!this.state.submitEnabled}>Log in</button>
 				</form>
 			</div>
 		);

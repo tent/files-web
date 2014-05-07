@@ -10,6 +10,7 @@ require 'marbles-js'
 require 'marbles-tent-client-js'
 require 'raven-js'
 require 'icing'
+require 'cupcake-apps-bar'
 
 module Drop
   class App
@@ -52,6 +53,7 @@ module Drop
           MarblesTentClientJS::Sprockets.setup(environment)
           RavenJS::Sprockets.setup(environment)
           Icing::Sprockets.setup(environment)
+          CupcakeAppsBar::Sprockets.setup(environment)
 
           environment
         end

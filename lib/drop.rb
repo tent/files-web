@@ -39,6 +39,8 @@ module Drop
     self.settings[:alert_dismiss_url]    = options[:alert_dismiss_url]    || ENV['ALERT_DISMISS_URL']
     self.settings[:shortener_url]        = options[:shortener_url]        || ENV['SHORTENER_URL']
 
+    self.settings[:cupcake_apps_bar_url] = options[:cupcake_apps_bar_url] || ENV['CUPCAKE_APPS_BAR_URL']
+
     unless settings[:url]
       raise ConfigurationError.new("Missing url option, you need to set URL")
     end
