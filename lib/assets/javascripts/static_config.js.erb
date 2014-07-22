@@ -9,6 +9,7 @@ Drop.config = {
   SIGNIN_URL: <%= Yajl::Encoder.encode(Drop.settings[:signin_url]) %>,
   SIGNOUT_URL: <%= Yajl::Encoder.encode(Drop.settings[:signout_url]) %>,
   SIGNOUT_REDIRECT_URL: <%= Yajl::Encoder.encode(Drop.settings[:signout_redirect_url]) %>,
+  RESET_PASSPHRASE_URL: <%= Yajl::Encoder.encode(Drop.settings[:reset_passphrase_url]) %>,
 
   ALERT_DISMISS_URL: <%= Yajl::Encoder.encode(Drop.settings[:alert_dismiss_url]) %>,
   SHORTENER_URL: <%= Yajl::Encoder.encode(Drop.settings[:shortener_url]) %>,

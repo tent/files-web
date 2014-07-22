@@ -7,7 +7,8 @@ Drop.Views.Auth = React.createClass({
 		return {
 			alert: null,
 			fieldsSuccess: null, // { name: true/false }
-			submitEnabled: true
+			submitEnabled: true,
+			mode: "login"
 		};
 	},
 
@@ -20,22 +21,49 @@ Drop.Views.Auth = React.createClass({
 			submitEnabled: false
 		});
 
-    new Marbles.HTTP({
-      method: 'POST',
-      url: this.props.signinURL,
-      body: {
-        username: this.refs.username.getDOMNode().value,
-        passphrase: this.refs.passphrase.getDOMNode().value
-      },
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      middleware: [
-        Marbles.HTTP.Middleware.WithCredentials,
-        Marbles.HTTP.Middleware.FormEncoded,
-        Marbles.HTTP.Middleware.SerializeJSON
-      ],
-      callback: this.handleSubmitResponse
+		if (this.state.mode === "login") {
+			this.handleLoginSubmit();
+		} else {
+			this.handleResetSubmit();
+		}
+	},
+
+	handleLoginSubmit: function () {
+		new Marbles.HTTP({
+			method: 'POST',
+			url: this.props.signinURL,
+			body: {
+				username: this.refs.username.getDOMNode().value,
+				passphrase: this.refs.passphrase.getDOMNode().value
+			},
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			middleware: [
+				Marbles.HTTP.Middleware.WithCredentials,
+				Marbles.HTTP.Middleware.FormEncoded,
+				Marbles.HTTP.Middleware.SerializeJSON
+			],
+			callback: this.handleSubmitResponse
+		});
+	},
+
+	handleResetSubmit: function () {
+		new Marbles.HTTP({
+			method: 'POST',
+			url: this.props.resetURL,
+			body: {
+				username: this.refs.username.getDOMNode().value
+			},
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			middleware: [
+				Marbles.HTTP.Middleware.WithCredentials,
+				Marbles.HTTP.Middleware.FormEncoded,
+				Marbles.HTTP.Middleware.SerializeJSON
+			],
+			callback: this.handleResetSubmitResponse
 		});
 	},
 
@@ -51,15 +79,33 @@ Drop.Views.Auth = React.createClass({
 			});
 			this.props.successHandler(res, xhr);
 		} else {
-			this.setState({
-				alert: { text: (res.error || 'Something went wrong'), type: 'error' },
-				fieldsSuccess: {
-					username: res.fields ? res.fields.hasOwnProperty('username') : false,
-					passphrase: res.fields ? res.fields.hasOwnProperty('passphrase') : false,
-				},
-				submitEnabled: true
-			});
+			this.handleSubmitFailure(res);
 		}
+	},
+
+	handleResetSubmitResponse: function (res, xhr) {
+		if (xhr.status === 200) {
+			this.setState({
+				alert: { text: "Reset email sent.", type: 'success' },
+				fieldsSuccess: {
+					username: true
+				},
+				submitEnabled: false
+			});
+		} else {
+			this.handleSubmitFailure(res);
+		}
+	},
+
+	handleSubmitFailure: function (res) {
+		this.setState({
+			alert: { text: (res.error || 'Something went wrong'), type: 'error' },
+			fieldsSuccess: {
+				username: res.fields ? res.fields.hasOwnProperty('username') : false,
+				passphrase: res.fields ? res.fields.hasOwnProperty('passphrase') : false,
+			},
+			submitEnabled: true
+		});
 	},
 
 	classNameForField: function (name) {
@@ -95,17 +141,43 @@ Drop.Views.Auth = React.createClass({
 						</div>
 					</div>
 
-					<div className='control-group' className={ this.classNameForField('passphrase') }>
-						<label>Passphrase</label>
-						<div className='input-append'>
-							<input ref='passphrase' name='passphrase' type='password' />
-							<span className='add-on'><i></i></span>
+					{this.state.mode === "login" ? (
+						<div className='control-group' className={ this.classNameForField('passphrase') }>
+							<label>Passphrase</label>
+							<div className='input-append'>
+								<input ref='passphrase' name='passphrase' type='password' />
+								<span className='add-on'><i></i></span>
+							</div>
 						</div>
-					</div>
+					) : null}
 
-					<button className='btn btn-primary' type='submit' disabled={!this.state.submitEnabled}>Log in</button>
+					<button className='btn btn-primary' type='submit' disabled={!this.state.submitEnabled}>{this.state.mode === "login" ? "Log in" : "Reset passphrase"}</button>
+
+					{this.props.resetURL ? (
+						<a href="#reset-passphrase" className="reset-passphrase" onClick={this.__handleResetToggleClick}>{this.state.mode === "login" ? "reset passphrase" : "cancel"}</a>
+					) : null}
 				</form>
 			</div>
 		);
+	},
+
+	__handleResetToggleClick: function (e) {
+		e.preventDefault();
+		e.target.blur();
+		if (this.state.mode === "login") {
+			this.setState({
+				mode: "reset",
+				submitEnabled: true,
+				alert: null,
+				fieldsSuccess: null
+			});
+		} else {
+			this.setState({
+				mode: "login",
+				submitEnabled: true,
+				alert: null,
+				fieldsSuccess: null
+			});
+		}
 	}
 });

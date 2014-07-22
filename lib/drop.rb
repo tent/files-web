@@ -36,6 +36,7 @@ module Drop
     self.settings[:signin_url]           = options[:signin_url]           || ENV['SIGNIN_URL']
     self.settings[:signout_url]          = options[:signout_url]          || ENV['SIGNOUT_URL']
     self.settings[:signout_redirect_url] = options[:signout_redirect_url] || ENV['SIGNOUT_REDIRECT_URL']
+    self.settings[:reset_passphrase_url] = options[:reset_passphrase_url] || ENV['RESET_PASSPHRASE_URL']
     self.settings[:alert_dismiss_url]    = options[:alert_dismiss_url]    || ENV['ALERT_DISMISS_URL']
     self.settings[:shortener_url]        = options[:shortener_url]        || ENV['SHORTENER_URL']
 
