@@ -118,3 +118,10 @@ A single attachment is required.
 [jsxhint](https://github.com/STRML/JSXHint) must pass using the project's `.jshintrc` config.
 
 Note that the actual Javascript application is located in `lib/assets/javascripts`. [Sprockets](https://github.com/sstephenson/sprockets) is used to compile and concatenate files.
+
+## See also
+
+- [React](https://facebook.github.io/react/)
+- [Marbles](https://github.com/jvatic/marbles-js)
+- [static-sprockets](https://github.com/jvatic/static-sprockets)
+- [static-sprockets-tent](https://github.com/jvatic/static-sprockets-tent)
