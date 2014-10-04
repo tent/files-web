@@ -36,10 +36,10 @@ GIT
 
 GIT
   remote: git://github.com/jvatic/react-jsx-sprockets.git
-  revision: 7ea77c58eb05a3573bd9c03f7149b1101cdf20fe
+  revision: 3b376d75adcf57c6c512afbd7f6ce1afb8de02f3
   branch: master
   specs:
-    react-jsx-sprockets (0.0.2)
+    react-jsx-sprockets (0.1.0)
       execjs (>= 1.2.9)
       sprockets (>= 2.0.3)
       tilt (>= 1.3.3)
