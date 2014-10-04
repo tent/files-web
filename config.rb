@@ -11,7 +11,16 @@ StaticSprockets.configure(
   :asset_types => %w( javascripts stylesheets images ),
   :layout => "./lib/views/application.erb",
   :layout_output_name => 'drop.html',
-  :output_dir => ENV['ASSETS_DIR'] || "./build"
+  :output_dir => ENV['ASSETS_DIR'] || "./build",
+  :output_asset_names => %w(
+    icing.css
+    application.css
+    application.js
+    moment.js
+    react.js
+    react-infinite-scroll.js
+    raven.js
+  )
 )
 
 if ENV['SKIP_AUTHENTICATION'].nil? || ENV['SKIP_AUTHENTICATION'] === 'false'
