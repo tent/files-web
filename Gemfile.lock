@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: git://github.com/jvatic/static-sprockets-tent.git
-  revision: e48c9f33a3d1b09aa646f719105f79f6e96e75b8
+  revision: 4a7067de87b43783aff5f11bef3986fed98576ea
   branch: master
   specs:
     static-sprockets-tent (0.0.1)
