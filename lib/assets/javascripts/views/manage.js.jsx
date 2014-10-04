@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.Manage = React.createClass({
 	displayName: 'Drop.Views.Manage',
@@ -119,3 +122,5 @@ Drop.Views.Manage = React.createClass({
 		);
 	}
 });
+
+})();

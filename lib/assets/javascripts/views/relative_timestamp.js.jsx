@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.RelativeTimestamp = React.createClass({
 	getInitialState: function () {
@@ -50,3 +53,5 @@ Drop.Views.RelativeTimestamp = React.createClass({
 		return <span title={Drop.Helpers.formatDateTime(this.props.milliseconds)}>{Drop.Helpers.formatRelativeTime(this.props.milliseconds)}</span>;
 	}
 });
+
+})();

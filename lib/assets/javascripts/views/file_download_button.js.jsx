@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.FileDownloadButton = React.createClass({
 	handleClick: function (e) {
@@ -23,3 +26,5 @@ Drop.Views.FileDownloadButton = React.createClass({
 		);
 	}
 });
+
+})();

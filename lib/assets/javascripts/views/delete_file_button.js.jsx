@@ -1,10 +1,13 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.DeleteFileButton = React.createClass({
 	handleClick: function (e) {
 		e.preventDefault();
 
-		if (!confirm("Delete " + this.props.name + "?")) {
+		if (!window.confirm("Delete " + this.props.name + "?")) {
 			return;
 		}
 
@@ -17,3 +20,5 @@ Drop.Views.DeleteFileButton = React.createClass({
 		);
 	}
 });
+
+})();

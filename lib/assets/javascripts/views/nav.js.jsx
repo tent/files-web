@@ -2,6 +2,8 @@
 
 (function () {
 
+	"use strict";
+
 	var navItems = [
 		{ fragment: "files", iconName: "files-o", name: "Files" }
 	];

@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.AuthButton = React.createClass({
 	displayName: 'Drop.Views.AuthButton',
@@ -26,3 +29,5 @@ Drop.Views.AuthButton = React.createClass({
 		);
 	}
 });
+
+})();

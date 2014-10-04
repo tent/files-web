@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.Upload = React.createClass({
 	displayName: 'Drop.Views.Upload',
@@ -142,3 +145,5 @@ Drop.Views.Upload = React.createClass({
 		);
 	}
 });
+
+})();

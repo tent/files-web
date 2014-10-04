@@ -133,4 +133,6 @@ A single attachment is required.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+[jsxhint](https://github.com/STRML/JSXHint) must pass using the project's `.jshintrc` config.
+
 Note that the actual Javascript application is located in `lib/assets/javascripts`. [Sprockets](https://github.com/sstephenson/sprockets) is used to compile and concatenate files.
