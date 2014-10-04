@@ -7,8 +7,8 @@ Drop.config = {
   PATH_PREFIX: <%= Yajl::Encoder.encode(ENV['PATH_PREFIX']) %>,
 
   SIGNIN_URL: <%= Yajl::Encoder.encode(ENV['SIGNIN_URL']) %>,
-  SIGNOUT_URL: <%= Yajl::Encoder.encode(ENV['SIGNOUT_URL'] || "#{ENV['URL']}/config") %>,
-  SIGNOUT_REDIRECT_URL: <%= Yajl::Encoder.encode(ENV['SIGNOUT_REDIRECT_URL'] || ENV['URL']) %>,
+  SIGNOUT_URL: <%= Yajl::Encoder.encode(ENV['SIGNOUT_URL'] || "#{ENV['URL']}/auth/signout") %>,
+  SIGNOUT_REDIRECT_URL: <%= Yajl::Encoder.encode(ENV['SIGNOUT_URL'] ? ENV['SIGNOUT_REDIRECT_URL'] : ENV['SIGNOUT_REDIRECT_URL'] || ENV['URL']) %>,
 
   SHORTENER_URL: <%= Yajl::Encoder.encode(ENV['SHORTENER_URL']) %>,
 
