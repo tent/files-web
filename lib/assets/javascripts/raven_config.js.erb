@@ -1,6 +1,6 @@
 if (typeof Raven !== 'undefined') {
-	Raven.config(<%= Yajl::Encoder.encode(Drop.settings[:sentry_url]) %>, {
-		whitelistUrls: [/<%= URI(Drop.settings[:url]).host %>/],
+	Raven.config(<%= Yajl::Encoder.encode(ENV['SENTRY_URL']) %>, {
+		whitelistUrls: [/<%= URI(ENV['URL']).host %>/],
 		fetchContext: true,
 		linesofContext: 3
 	}).install();

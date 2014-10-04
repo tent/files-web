@@ -26,8 +26,14 @@
 
 		render: function () {
 			var AppNavItem = Drop.Views.AppNavItem;
-			var navItems = this.state.navItems.map(function (item) {
-				return <AppNavItem key={item.fragment} fragment={item.fragment} active={item.fragment === this.state.activeFragment} iconName={item.iconName} name={item.name} />;
+			var navItems = this.state.navItems;
+			if (this.props.authenticated) {
+				navItems = navItems.concat([{ fragment: "signout", iconName: "power-off", name: "Sign out" }]);
+			} else {
+				navItems = navItems.concat([{ fragment: "signin", iconName: "power-off", name: "Sign in" }]);
+			}
+			navItems = navItems.map(function (item) {
+				return <AppNavItem key={item.fragment} fragment={item.fragment} active={item.fragment === this.state.activeFragment} iconName={item.iconName} name={item.name} disabled={ !this.props.authenticated } />;
 			}.bind(this));
 			return (
 				<div>
@@ -47,14 +53,14 @@
 
 		handleClick: function (e) {
 			e.preventDefault();
-			if (this.props.authenticated) {
+			if ( !this.props.disabled ) {
 				Marbles.history.navigate(this.props.fragment, { trigger: true });
 			}
 		},
 
 		render: function () {
 			return (
-				<a className={(this.props.active ? 'active' : '') + (this.props.authenticated ? '' : ' disabled') } href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
+				<a className={(this.props.active ? 'active' : '') + (this.props.disabled ? ' disabled' : '') } href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
 					<li>
 						<i className={"fa fa-" + this.props.iconName}></i>{this.props.name}
 					</li>

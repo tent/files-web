@@ -3,14 +3,14 @@ if (!window.Drop) {
 }
 
 Drop.config = {
-  JSON_CONFIG_URL: <%= Yajl::Encoder.encode(Drop.settings[:json_config_url]) %>,
-  PATH_PREFIX: <%= Yajl::Encoder.encode(Drop.settings[:path_prefix]) %>,
+  JSON_CONFIG_URL: <%= Yajl::Encoder.encode(ENV['JSON_CONFIG_URL'] || "#{ENV['URL']}/config") %>,
+  PATH_PREFIX: <%= Yajl::Encoder.encode(ENV['PATH_PREFIX']) %>,
 
-  SIGNIN_URL: <%= Yajl::Encoder.encode(Drop.settings[:signin_url]) %>,
-  SIGNOUT_URL: <%= Yajl::Encoder.encode(Drop.settings[:signout_url]) %>,
-  SIGNOUT_REDIRECT_URL: <%= Yajl::Encoder.encode(Drop.settings[:signout_redirect_url]) %>,
+  SIGNIN_URL: <%= Yajl::Encoder.encode(ENV['SIGNIN_URL']) %>,
+  SIGNOUT_URL: <%= Yajl::Encoder.encode(ENV['SIGNOUT_URL'] || "#{ENV['URL']}/config") %>,
+  SIGNOUT_REDIRECT_URL: <%= Yajl::Encoder.encode(ENV['SIGNOUT_REDIRECT_URL'] || ENV['URL']) %>,
 
-  SHORTENER_URL: <%= Yajl::Encoder.encode(Drop.settings[:shortener_url]) %>,
+  SHORTENER_URL: <%= Yajl::Encoder.encode(ENV['SHORTENER_URL']) %>,
 
   POSTS_PER_PAGE: 20,
   POST_TYPES: {

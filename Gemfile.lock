@@ -46,6 +46,33 @@ GIT
       yajl-ruby
 
 GIT
+  remote: git://github.com/jvatic/static-sprockets-tent.git
+  revision: e48c9f33a3d1b09aa646f719105f79f6e96e75b8
+  branch: master
+  specs:
+    static-sprockets-tent (0.0.1)
+      omniauth-tent
+      static-sprockets
+      tent-client
+      yajl-ruby
+
+GIT
+  remote: git://github.com/jvatic/static-sprockets.git
+  revision: 286b0210541117abb63439f2852f98c6e13a7c05
+  branch: master
+  specs:
+    static-sprockets (0.0.2)
+      mimetype-fu
+      rack (~> 1.0)
+      rack-putty (= 0.0.1)
+      sass
+      sprockets (~> 2.0)
+      sprockets-helpers
+      sprockets-rainpress
+      sprockets-sass
+      uglifier
+
+GIT
   remote: git://github.com/tent/hawk-ruby.git
   revision: ad6be56282aa77870db36313bdc38f0e139cd78e
   branch: master
@@ -54,8 +81,8 @@ GIT
 
 GIT
   remote: git://github.com/tent/icing.git
-  revision: a5e0ba48ffd943d25ac66d148d8e0f95105d7267
-  branch: master
+  revision: a836d7e9973bff8b41c11d0a32dbb105b0c033c7
+  branch: refactor
   specs:
     icing (0.0.1)
       compass (~> 0.12.2)
@@ -124,7 +151,7 @@ GEM
       tzinfo (~> 0.3.37)
     atomic (1.1.14)
     builder (3.1.4)
-    chunky_png (1.2.9)
+    chunky_png (1.3.1)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -225,6 +252,8 @@ DEPENDENCIES
   sass
   sprockets (~> 2.0)!
   sprockets-rainpress
+  static-sprockets!
+  static-sprockets-tent!
   tent-client!
   therubyracer
   uglifier

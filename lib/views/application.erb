@@ -11,10 +11,6 @@
   </head>
 
   <body>
-    <div class='v-navbar-fixed-left'>
-      <%= erb :global_nav %>
-    </div>
-
     <div id='main-nav'>
     </div>
 
@@ -30,7 +26,7 @@
       <script type='application/javascript' src='<%= asset_path('react.js') %>'></script>
       <script type='application/javascript' src='<%= asset_path('react-infinite-scroll.js') %>'></script>
       <script type='application/javascript' src='<%= asset_path('marbles.js') %>'></script>
-      <% if Drop.settings[:sentry_url] %>
+      <% if ENV['SENTRY_URL'] %>
         <script type='application/javascript' src='<%= asset_path('raven.js') %>'></script>
       <% end %>
       <script type='application/javascript' src='<%= asset_path('application.js') %>'></script>
