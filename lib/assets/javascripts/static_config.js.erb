@@ -12,6 +12,10 @@ Drop.config = {
 
   SHORTENER_URL: <%= Yajl::Encoder.encode(ENV['SHORTENER_URL']) %>,
 
+  CONTACTS_URL: <%= Yajl::Encoder.encode(ENV['CONTACTS_URL']) %>,
+
+  SIGIL_API_ROOT: <%= Yajl::Encoder.encode(ENV['SIGIL_API_ROOT']) %>,
+
   POSTS_PER_PAGE: 20,
   POST_TYPES: {
     file: "https://tent.io/types/file/v0#"

@@ -5,10 +5,12 @@ require 'marbles-js'
 require 'marbles-tent-client-js'
 require 'raven-js'
 require 'icing'
+require 'contacts-service'
 
+ContactsService.configure
 StaticSprockets.configure(
-  :asset_roots => ["./lib/assets", "./vendor/assets"],
-  :asset_types => %w( javascripts stylesheets images ),
+  :asset_roots => ["./lib/assets", "./vendor/assets"].concat(ContactsService.settings[:asset_paths]),
+  :asset_types => %w( javascripts stylesheets images . ),
   :layout => "./lib/views/application.erb",
   :layout_output_name => 'drop.html',
   :output_dir => ENV['ASSETS_DIR'] || "./build",
@@ -20,7 +22,10 @@ StaticSprockets.configure(
     react.js
     react-infinite-scroll.js
     raven.js
-  )
+  ),
+  :content_security_policy => {
+    'frame-src' => ENV['CONTACTS_URL'].to_s + %( 'self')
+  }
 )
 
 if ENV['SKIP_AUTHENTICATION'].nil? || ENV['SKIP_AUTHENTICATION'] === 'false'
@@ -30,6 +35,7 @@ if ENV['SKIP_AUTHENTICATION'].nil? || ENV['SKIP_AUTHENTICATION'] === 'false'
       :name => "Files",
       :description => "Web app for uploading files to your Tent server.",
       :display_url => "https://github.com/cupcake/files-web",
+      :read_types => %w( https://tent.io/types/relationship/v0),
       :write_types => %w( https://tent.io/types/file/v0 ),
       :scopes => %w( permissions )
     },

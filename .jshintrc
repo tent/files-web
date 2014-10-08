@@ -20,6 +20,7 @@
 	"globals": {
 		"Drop": true,
 		"TentClient": false,
+		"TentContacts": false,
 		"React": false,
 		"Marbles": false,
 		"_": false,

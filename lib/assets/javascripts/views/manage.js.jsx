@@ -71,12 +71,26 @@ Drop.Views.Manage = React.createClass({
 						</tr>
 					);
 				} else {
+					var permissionsText = "";
+					var className = "fa fa-";
+					if (model.get('permissions.public') === false) {
+						if ((model.get('permissions.entities') || []).length > 0) {
+							permissionsText = 'Shared ('+ model.get('permissions.entities').join(', ') +')';
+							className = className+'users';
+						} else {
+							permissionsText = 'Private';
+							className = className+'lock';
+						}
+					} else {
+						permissionsText = 'Public';
+						className = className+'unlock';
+					}
 					rows.push(
 						<tr key={model.cid}>
 							<td>
 								<i
-									title={model.get('permissions.public') === false ? 'Private' : 'Public'}
-									className={'fa fa-'+ (model.get('permissions.public') === false ? 'lock' : 'unlock')} />
+									title={permissionsText}
+									className={className} />
 							</td>
 							<td>{model.get('file_meta.name')}</td>
 							<td><FileDownloadButton file={model} /></td>
