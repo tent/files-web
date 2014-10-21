@@ -5,7 +5,8 @@
 	"use strict";
 
 	var navItems = [
-		{ fragment: "files", iconName: "files-o", name: "Files" }
+		{ fragment: "files", iconName: "files-o", name: "Files" },
+		{ fragment: "inbox", iconName: "inbox", name: "Inbox" }
 	];
 
 	Drop.Views.AppNav = React.createClass({
