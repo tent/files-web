@@ -66,14 +66,7 @@ Drop.Views.ContactSelector = React.createClass({
 	},
 
 	getAvatarURL: function (profile) {
-		if (profile.avatarDigest) {
-			return Drop.client.getNamedURL('attachment', [{
-				entity: profile.entity,
-				digest: profile.avatarDigest
-			}]);
-		} else {
-			return Drop.Helpers.sigilURL(profile.entity, { w: 60 });
-		}
+		return Drop.Helpers.avatarURL(profile.entity, profile.avatarDigest);
 	},
 
 	hidePicker: function () {

@@ -57,82 +57,103 @@ Drop.Views.Manage = React.createClass({
 				FileAlerts = Drop.Views.FileAlerts,
 				RelativeTimestamp = Drop.Views.RelativeTimestamp,
 				InfiniteScroll = React.addons.InfiniteScroll;
-		var rows = [],
-				model;
-		if (this.state.models) {
-			for (var i = 0, _ref = this.state.models, _len = _ref.length; i < _len; i++) {
-				model = _ref[i];
 
-				if (!model.get('file_meta.size')) {
-					rows.push(
-						<tr key={model.cid} className='error'>
-							<td colSpan="5">Upload failed</td>
-							<td><DeleteFileButton model={model} name="Failed upload" /></td>
-						</tr>
-					);
+		var permissionsMeta = function (model) {
+			var permissionsText = "";
+			var className = "fa fa-";
+			if (model.get('permissions.public') === false) {
+				if ((model.get('permissions.entities') || []).length > 0) {
+					permissionsText = 'Shared ('+ model.get('permissions.entities').join(', ') +')';
+					className = className+'lock';
 				} else {
-					var permissionsText = "";
-					var className = "fa fa-";
-					if (model.get('permissions.public') === false) {
-						if ((model.get('permissions.entities') || []).length > 0) {
-							permissionsText = 'Shared ('+ model.get('permissions.entities').join(', ') +')';
-							className = className+'users';
-						} else {
-							permissionsText = 'Private';
-							className = className+'lock';
-						}
-					} else {
-						permissionsText = 'Public';
-						className = className+'unlock';
-					}
-					rows.push(
-						<tr key={model.cid}>
-							<td>
-								<i
-									title={permissionsText}
-									className={className} />
-							</td>
-							<td>{model.get('file_meta.name')}</td>
-							<td><FileDownloadButton file={model} /></td>
-							<td><FileShareButton file={model} /></td>
-							<td>{Drop.Helpers.formattedStorageAmount(model.get('file_meta.size'))}</td>
-							<td title={model.get('file_meta.type')}>{model.get('file_meta.ext')}</td>
-							<td><RelativeTimestamp milliseconds={model.get('published_at')} /></td>
-							<td><DeleteFileButton model={model} name={model.get('file_meta.name')} /></td>
-						</tr>
-					);
+					permissionsText = 'Private';
+					className = className+'lock';
 				}
+			} else {
+				permissionsText = 'Public';
+				className = className+'unlock';
 			}
-		}
+			return {
+				text: permissionsText,
+				className: className
+			};
+		};
+
+		var models = this.state.models || [];
+
+		var getAvatarURL = Drop.Helpers.avatarURL;
 
 		return (
-			<div>
+			<section>
 				<FileAlerts modelClass={this.props.collection.constructor.model} />
-				<table className='table table-striped manage-uploads-table'>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Filename</th>
-							<th></th>
-							<th></th>
-							<th>Size</th>
-							<th>Type</th>
-							<th>Date</th>
-							<th></th>
-						</tr>
-					</thead>
+				<ul className="files">
+					{models.map(function (file) {
+						var _ref = permissionsMeta(file);
+						var permissionsText = _ref.text;
+						var className = _ref.className;
+						var nameWithoutExt = file.get('file_meta.name');
+						if (file.nameIncludesExt) {
+							nameWithoutExt = nameWithoutExt.slice(0, nameWithoutExt.indexOf(file.get('file_meta.ext')));
+						}
+						var avatarURL = getAvatarURL(file.entity, (file.profile || {}).avatarDigest || null);
+						return (
+							<li key={file.id}>
+								{ !file.get('file_meta.size') ? (
+									<div className="alert alert-block alert-error">
+										Upload failed
+										<DeleteFileButton model={file} name="Failed upload" />
+									</div>
+								) : (
+									<article className="file">
+										<header>
+											<h1>
+												<img className="avatar" src={avatarURL} title={file.profile ? (file.profile.name === file.entity ? (file.entity) : (file.profile.name +" ("+ file.entity +")")) : (file.entity)} />
+												<small className="permissions">
+													<i
+														title={permissionsText}
+													className={className} />
+												</small>
+												{file.nameIncludesExt ? (
+													<span>
+														{nameWithoutExt}
+														<span title={file.get('file_meta.type')}>{file.get('file_meta.ext')}</span>
+													</span>
+												) : (
+													file.get('file_meta.name')
+												)}
+												{file.nameIncludesExt ? null : (
+													<small className="filemeta">
+														<span title={file.get('file_meta.type')}>({file.get('file_meta.ext')})</span>
+													</small>
+												)}
+											</h1>
 
-					<tbody>
-						{rows}
-					</tbody>
-				</table>
+											<aside className="meta">
+												{Drop.Helpers.formattedStorageAmount(file.get('file_meta.size'))}
+											</aside>
+
+											<aside className="actions">
+												<ul>
+													<li><DeleteFileButton model={file} name={file.get('file_meta.name')} /></li>
+													<li><FileDownloadButton file={file} /></li>
+													<li><FileShareButton file={file} /></li>
+													<li><RelativeTimestamp milliseconds={file.get('published_at')} /></li>
+												</ul>
+											</aside>
+										</header>
+									</article>
+								)}
+							</li>
+						);
+					})}
+				</ul>
 
 				<InfiniteScroll
 					loadMore={this.loadNextPage}
 					hasMore={!this.state.lastPage}
 					loader={<div>Loading...</div>}
 					threshold={250} />
-			</div>
+			</section>
 		);
 	}
 });

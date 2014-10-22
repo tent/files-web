@@ -20,15 +20,6 @@
 	}
 }
 
-.manage-uploads-table {
-	tr {
-		td:first-child {
-			max-width: 2em;
-			word-wrap: break-word;
-		}
-	}
-}
-
 .clickable {
 	cursor: pointer;
 }
@@ -43,12 +34,82 @@ a.icon, a.icon:hover {
 	}
 }
 
+.files {
+  list-style: none;
+  margin: 0;
+
+  > li {
+    @extend .clearfix;
+    border-bottom: 1px solid $secondaryColor;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+  .file {
+    > header {
+      display: -webkit-flex;
+      display: flex;
+    }
+
+    .avatar {
+      width: 21px;
+      height: 21px;
+    }
+
+    h1 {
+      padding: 0;
+      margin: 0;
+      line-height: 1em;
+      display: inline-block;
+      font-weight: 400;
+      word-break: break-all;
+      -webkit-flex-grow: 1;
+      flex-grow: 1;
+      max-width: 360px;
+    }
+
+    h1, h1 > small {
+      font-size: 1rem;
+    }
+
+    h1 > .permissions {
+      margin-right: 0.5em;
+    }
+
+    h1 > .filemeta {
+      margin-left: 0.5em;
+    }
+
+    .meta {
+      -webkit-flex-basis: 80px;
+      flex-basis: 80px;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .actions {
+      @extend .clearfix;
+      -webkit-flex-basis: 160px;
+      flex-basis: 160px;
+      min-width: 100px;
+      > ul {
+        list-style: none;
+        margin: 0;
+        > li {
+          float: right;
+          margin-left: 0.5em;
+        }
+      }
+    }
+  }
+
 .share-container {
 	position: relative;
 }
 	.share-box {
 		position: absolute;
-		left: 2em;
+		right: 2em;
 		top: 0px;
 		width: 16em;
 		background-color: $white;
