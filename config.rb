@@ -13,6 +13,7 @@ StaticSprockets.configure(
   :asset_types => %w( javascripts stylesheets images . ),
   :layout => "./lib/views/application.erb",
   :layout_output_name => 'drop.html',
+  :layout_dir => ENV['LAYOUT_DIR'] || "./build",
   :output_dir => ENV['ASSETS_DIR'] || "./build",
   :output_asset_names => %w(
     icing.css
