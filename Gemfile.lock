@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/cupcake/contacts-service.git
+  revision: 39d988b3baee63e4b240c3019a32faa3c4dff98d
+  ref: 39d988b3baee63e4b240c3019a32faa3c4dff98d
+  specs:
+    contacts-service (0.0.1)
+
+GIT
   remote: git://github.com/jvaill/sprockets.git
   revision: 6327a13e77609991509c8cf3d3c1e571f6a4b23d
   branch: master
@@ -36,14 +43,41 @@ GIT
 
 GIT
   remote: git://github.com/jvatic/react-jsx-sprockets.git
-  revision: 7ea77c58eb05a3573bd9c03f7149b1101cdf20fe
+  revision: 3b376d75adcf57c6c512afbd7f6ce1afb8de02f3
   branch: master
   specs:
-    react-jsx-sprockets (0.0.2)
+    react-jsx-sprockets (0.1.0)
       execjs (>= 1.2.9)
       sprockets (>= 2.0.3)
       tilt (>= 1.3.3)
       yajl-ruby
+
+GIT
+  remote: git://github.com/jvatic/static-sprockets-tent.git
+  revision: 4a7067de87b43783aff5f11bef3986fed98576ea
+  branch: master
+  specs:
+    static-sprockets-tent (0.0.1)
+      omniauth-tent
+      static-sprockets
+      tent-client
+      yajl-ruby
+
+GIT
+  remote: git://github.com/jvatic/static-sprockets.git
+  revision: b19dbd5a8b625ef3210a791d9cba658875b06173
+  branch: master
+  specs:
+    static-sprockets (0.0.2)
+      mimetype-fu
+      rack (~> 1.0)
+      rack-putty (= 0.0.1)
+      sass
+      sprockets (~> 2.0)
+      sprockets-helpers
+      sprockets-rainpress
+      sprockets-sass
+      uglifier
 
 GIT
   remote: git://github.com/tent/hawk-ruby.git
@@ -131,7 +165,7 @@ GEM
       tzinfo (~> 0.3.37)
     atomic (1.1.14)
     builder (3.1.4)
-    chunky_png (1.2.9)
+    chunky_png (1.3.1)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -211,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   asset_sync!
   coffee-script
+  contacts-service!
   cupcake-apps-bar!
   hawk-auth!
   icing!
@@ -228,6 +263,8 @@ DEPENDENCIES
   sass
   sprockets (~> 2.0)!
   sprockets-rainpress
+  static-sprockets!
+  static-sprockets-tent!
   tent-client!
   uglifier
   yajl-ruby

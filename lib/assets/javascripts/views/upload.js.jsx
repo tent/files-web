@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.Upload = React.createClass({
 	displayName: 'Drop.Views.Upload',
@@ -56,6 +59,10 @@ Drop.Views.Upload = React.createClass({
 		}
 	},
 
+	handleModelChange: function () {
+		this.setState({});
+	},
+
 	handleSubmit: function (e) {
 		e.preventDefault();
 
@@ -103,8 +110,9 @@ Drop.Views.Upload = React.createClass({
 		this.refs.name.getDOMNode().value = file.name || '';
 	},
 
-	handlePublicChanged: function (e) {
-		this.props.model.set('permissions.public', e.target.value === 'true');
+	handleEntitySelectionChange: function (entities) {
+		this.props.model.set('permissions.public', entities.indexOf("all") !== -1);
+		this.props.model.set('permissions.entities', entities);
 	},
 
 	render: function () {
@@ -126,19 +134,17 @@ Drop.Views.Upload = React.createClass({
 					<input type='text' ref='name' />
 				</label>
 
-				<div className='clearfix permissions-radio-group'>
-					<label className='pull-left'>
-						Public&nbsp;
-						<input type='radio' name='public' value='true' defaultChecked={this.props.model.get('permissions.public') !== false} onChange={this.handlePublicChanged} />
-					</label>
-					<label className='pull-left'>
-						Private&nbsp;
-						<input type='radio' name='public' value='false' defaultChecked={this.props.model.get('permissions.public') === false} onChange={this.handlePublicChanged} />
-					</label>
-				</div>
+				<Drop.Views.ContactSelector
+					ref='participantsSelector'
+					handleChangeSelection={this.handleEntitySelectionChange}
+					handleKeyDown={function(){}}
+					selectedEntities={this.props.model.get('permissions.entities') || []}
+					focusNextInput={function(){}}/>
 
 				<button type="submit" disabled={this.shouldDisableSubmit()} className='btn btn-primary'>{this.submitButtonDisplayText()}</button>
 			</form>
 		);
 	}
 });
+
+})();

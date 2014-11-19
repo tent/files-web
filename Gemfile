@@ -9,6 +9,10 @@ gem 'mimetype-fu'
 gem 'coffee-script'
 gem 'sass'
 
+gem 'static-sprockets', :git => 'git://github.com/jvatic/static-sprockets.git', :branch => 'master'
+gem 'static-sprockets-tent', :git => 'git://github.com/jvatic/static-sprockets-tent.git', :branch => 'master', :require => false
+
+gem 'contacts-service', :git => 'git://github.com/cupcake/contacts-service.git', :ref => '39d988b3baee63e4b240c3019a32faa3c4dff98d'
 gem 'rack-putty', :git => 'git://github.com/tent/rack-putty.git', :branch => 'master'
 gem 'marbles-js', :git => 'git://github.com/jvatic/marbles-js.git', :branch => 'redesign'
 gem 'marbles-tent-client-js', :git => 'git://github.com/tent/marbles-tent-client-js.git', :branch => 'redesign'

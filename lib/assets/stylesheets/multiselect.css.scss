@@ -1,0 +1,109 @@
+@import 'icing/settings';
+@import 'icing/common';
+
+.multiselect-container {
+	margin-bottom: 10px;
+
+	.input {
+		> input {
+			border: none;
+			box-shadow: none;
+			margin: 0px;
+			padding: 0px;
+			width: 40px;
+		}
+	}
+
+	.m-input {
+		border: 1px solid $gray;
+		padding: 4px 6px;
+		margin-bottom: 0px;
+
+		> li {
+			display: inline-block;
+			margin-right: 0.2em;
+			margin-bottom: 0.2em;
+
+			border: 1px solid $dark_gray;
+			border-radius: 4px;
+
+			&.input {
+				border: none;
+			}
+
+			img, .icon {
+				width: 16px;
+				height: 16px;
+				margin-right: 0.2em;
+				margin-bottom: 2px;
+				margin-left: 0.2em;
+			}
+
+			.text {
+				padding: 4px;
+			}
+
+			.remove {
+				margin-left: 0.2em;
+				margin-right: 0.2em;
+				padding-left: 0.2em;
+				border-left: 1px solid $dark_gray;
+
+				&:before {
+					color: $dark_gray;
+				}
+			}
+
+			&.active .remove, .remove:hover {
+				&:before {
+					color: $black;
+				}
+			}
+		}
+	}
+
+	.m-input, .input > input {
+		font-size: 12pt;
+		line-height: 1.5em;
+	}
+
+	.m-picker {
+		position: relative;
+		display: none;
+		&.active {
+			display: block;
+		}
+
+		margin-bottom: 0px;
+
+		max-height: 140px;
+		overflow-y: auto;
+
+		border: 1px solid $gray;
+		border-top: 0px;
+
+		z-index: 100;
+
+		> li {
+			margin: 0.2em;
+
+			img {
+				width: 32px;
+				height: auto;
+			}
+
+			.text {
+				margin-left: 0.2em;
+			}
+
+			.value {
+				margin-left: 0.4em;
+				font-style: italic;
+			}
+
+			&.active {
+				background-color: $gray;
+			}
+		}
+	}
+}

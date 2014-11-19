@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.Auth = React.createClass({
 	displayName: 'Drop.Views.Auth',
@@ -133,7 +136,7 @@ Drop.Views.Auth = React.createClass({
 				<form className='signin-form' onSubmit={this.handleSubmit}>
 					{alertEl}
 
-					<div className='control-group' className={ this.classNameForField('username') }>
+					<div className={ 'control-group'+ this.classNameForField('username') }>
 						<label>Username</label>
 						<div className='input-append'>
 							<input ref='username' name='username' type='text' autoCapitalize="off" autoCorrect="off" autoComplete="off" />
@@ -142,7 +145,7 @@ Drop.Views.Auth = React.createClass({
 					</div>
 
 					{this.state.mode === "login" ? (
-						<div className='control-group' className={ this.classNameForField('passphrase') }>
+						<div className={'control-group '+ this.classNameForField('passphrase')}>
 							<label>Passphrase</label>
 							<div className='input-append'>
 								<input ref='passphrase' name='passphrase' type='password' />
@@ -181,3 +184,5 @@ Drop.Views.Auth = React.createClass({
 		}
 	}
 });
+
+})();

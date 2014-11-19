@@ -23,6 +23,7 @@ module.exports = function (React) {
     },
     getInitialState: function () {
       this.pageLoaded = this.props.pageStart;
+			return {};
     },
     componentDidMount: function () {
       this.attachScrollListener();

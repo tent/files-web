@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.Main = React.createClass({
 	displayName: 'Drop.Views.Main',
@@ -14,3 +17,5 @@ Drop.Views.Main = React.createClass({
 		);
 	}
 });
+
+})();

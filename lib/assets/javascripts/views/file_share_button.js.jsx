@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.FileShareButton = React.createClass({
 	getInitialState: function () {
@@ -40,7 +43,7 @@ Drop.Views.FileShareButton = React.createClass({
 		this.setState({ active: false });
 	},
 
-	handleURLFocus: function (e) {
+	handleURLFocus: function () {
 		Drop.Props.InputSelection.selectAll( this.refs.url.getDOMNode() );
 	},
 
@@ -51,15 +54,6 @@ Drop.Views.FileShareButton = React.createClass({
 	},
 
 	render: function () {
-		function numericOptions(max, desc) {
-			max = Math.floor(max);
-			var opts = [];
-			for (var i = 0; i < max; i++) {
-				opts.push(<option key={i + desc} value={i}>{i + desc}</option>);
-			}
-			return opts;
-		}
-
 		var shareBox = '';
 		if (this.state.active) {
 			var duration = moment.duration(this.state.ttl, 'seconds');
@@ -83,3 +77,5 @@ Drop.Views.FileShareButton = React.createClass({
 		);
 	}
 });
+
+})();

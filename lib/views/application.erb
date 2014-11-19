@@ -22,17 +22,18 @@
       </div>
     </div>
 
-    <iframe id="apps-bar" src="<%= Drop.settings[:cupcake_apps_bar_url] %>"></iframe>
+    <iframe id="apps-bar" src="<%= ENV['CUPCAKE_APPS_BAR_URL'] %>"></iframe>
 
     <% unless block_given? %>
+      <% if ENV['SENTRY_URL'] %>
+        <script type='application/javascript' src='<%= asset_path('raven.js') %>'></script>
+      <% end %>
       <script type='application/javascript' src='<%= asset_path('lodash.js') %>'></script>
       <script type='application/javascript' src='<%= asset_path('moment.js') %>'></script>
       <script type='application/javascript' src='<%= asset_path('react.js') %>'></script>
       <script type='application/javascript' src='<%= asset_path('react-infinite-scroll.js') %>'></script>
       <script type='application/javascript' src='<%= asset_path('marbles.js') %>'></script>
-      <% if Drop.settings[:sentry_url] %>
-        <script type='application/javascript' src='<%= asset_path('raven.js') %>'></script>
-      <% end %>
+      <script type='application/javascript' src='<%= asset_path('contacts_api.js') %>'></script>
       <script type='application/javascript' src='<%= asset_path('application.js') %>'></script>
     <% end %>
   </body>

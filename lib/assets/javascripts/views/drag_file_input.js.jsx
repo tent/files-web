@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.DragFileInput = React.createClass({
 	displayName: 'Drop.Views.DragFileInput',
@@ -58,3 +61,5 @@ Drop.Views.DragFileInput = React.createClass({
 		);
 	}
 });
+
+})();

@@ -1,4 +1,7 @@
 /** @jsx React.DOM */
+(function () {
+
+"use strict";
 
 Drop.Views.FileAlerts = React.createClass({
 	getInitialState: function () {
@@ -16,11 +19,11 @@ Drop.Views.FileAlerts = React.createClass({
 	},
 
 	handleDeleteFailure: function (model, res, xhr) {
-		var msg = 'Failed to delete '+ (model.get('file_meta.name') || 'file') +': ' (res.error || xhr.status);
+		var msg = 'Failed to delete '+ (model.get('file_meta.name') || 'file') +': '+ (res.error || xhr.status);
 		this.setState({ msg: msg, type: 'error' });
 	},
 
-	handleDeleteSuccess: function (model, res, xhr) {
+	handleDeleteSuccess: function (model) {
 		var msg = 'Successfully deleted '+ (model.get('file_meta.name') || 'file') +'.';
 		this.setState({ msg: msg, type: 'success' });
 	},
@@ -58,3 +61,5 @@ Drop.Views.FileAlerts = React.createClass({
 		}
 	}
 });
+
+})();

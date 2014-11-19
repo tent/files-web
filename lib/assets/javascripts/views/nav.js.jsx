@@ -2,8 +2,11 @@
 
 (function () {
 
+	"use strict";
+
 	var navItems = [
-		{ fragment: "files", iconName: "files", name: "Files" }
+		{ fragment: "files", iconName: "files", name: "Files" },
+		{ fragment: "inbox", iconName: "inbox", name: "Inbox" }
 	];
 
 	Drop.Views.AppNav = React.createClass({
@@ -24,8 +27,9 @@
 
 		render: function () {
 			var AppNavItem = Drop.Views.AppNavItem;
-			var navItems = this.state.navItems.map(function (item) {
-				return <AppNavItem key={item.fragment} fragment={item.fragment} active={item.fragment === this.state.activeFragment} iconName={item.iconName} name={item.name} />;
+			var navItems = this.state.navItems;
+			navItems = navItems.map(function (item) {
+				return <AppNavItem key={item.fragment} fragment={item.fragment} active={item.fragment === this.state.activeFragment} iconName={item.iconName} name={item.name} disabled={ !this.props.authenticated } />;
 			}.bind(this));
 			return (
 				<div>
@@ -45,14 +49,14 @@
 
 		handleClick: function (e) {
 			e.preventDefault();
-			if (this.props.authenticated) {
+			if ( !this.props.disabled ) {
 				Marbles.history.navigate(this.props.fragment, { trigger: true });
 			}
 		},
 
 		render: function () {
 			return (
-				<a className={(this.props.active ? 'active' : '') + (this.props.authenticated ? '' : ' disabled') } href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
+				<a className={(this.props.active ? 'active' : '') + (this.props.disabled ? ' disabled' : '') } href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
 					<li>
 						<i className={"picto picto-" + this.props.iconName}></i>{this.props.name}
 					</li>
