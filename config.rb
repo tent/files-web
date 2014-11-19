@@ -23,6 +23,7 @@ StaticSprockets.configure(
     react.js
     react-infinite-scroll.js
     raven.js
+    contacts-api.js
   ),
   :content_security_policy => {
     'frame-src' => ENV['CONTACTS_URL'].to_s + %( 'self')
