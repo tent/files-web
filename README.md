@@ -10,7 +10,8 @@ ENV                    | Required | Description
 `JSON_CONFIG_URL`      | Required | URL of the JSON config. The `Access-Control-Allow-Credentials` header must be set. Must return a 401 status if auth required via `SIGNIN_URL`.
 `CONTACTS_URL`         | Required | URL pointing to an instance of the [Contacts Service](https://github.com/cupcake/contacts-service) (loaded inside an iframe). Note that `frame-src` and `frame-ancestors` CSP headers need to be set appropriately.
 `PATH_PREFIX`          | Optional | If the app is not mounted at the domain root, you need to specify the path prefix.
-`ASSETS_DIR`           | Optional | Directory assets should be compiled to (defaults to `public/assets`).
+`ASSETS_DIR`           | Optional | Directory assets should be compiled to (defaults to `./build/assets`).
+`LAYOUT_DIR`           | Optional | Directory layout should be compiled to (defaults to `./build`).
 `SENTRY_URL`           | Optional | Set if you want to track errors with [Sentry](https://www.getsentry.com).
 `ALERT_DISMISS_URL`    | Required | URL that accepts a DELETE request. `:id` is replaced with the id of the alert. Expects 200 with no body for success.
 `SHORTENER_URL`        | Optional | URL accepting a JSON POST request with `{"long_url": "https://..."}` and returning the same object with an added `short_url` member. This URL must have CORS headers setup.
