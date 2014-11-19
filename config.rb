@@ -25,6 +25,7 @@ StaticSprockets.configure(
     react-infinite-scroll.js
     raven.js
     contacts_api.js
+    marbles.js
   ),
   :content_security_policy => {
     'frame-src' => [ENV['CONTACTS_URL'], ENV['CUPCAKE_APPS_BAR_URL'], 'self'].reject { |i| i.nil? }.join(' ')
