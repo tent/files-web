@@ -8,6 +8,7 @@ gzip
 
 rewrite / /drop.html
 rewrite {
+  if {path} not_has /assets
   to {path} /drop.html
 }
 
