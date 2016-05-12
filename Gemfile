@@ -25,6 +25,8 @@ gem 'tent-client', :git => 'git://github.com/tent/tent-client-ruby.git', :branch
 gem 'hawk-auth', :git => 'git://github.com/tent/hawk-ruby.git', :branch => 'master'
 gem 'omniauth-tent', :git => 'git://github.com/tent/omniauth-tent.git', :branch => 'master'
 
+gem 'echoe'
+
 group :development, :assets do
   gem 'asset_sync', :git => 'git://github.com/titanous/asset_sync.git', :branch => 'fix-mime'
   gem 'mime-types'
