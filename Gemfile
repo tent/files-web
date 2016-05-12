@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'puma'
-
 gem 'rake'
 
 gem 'yajl-ruby'

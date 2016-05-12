@@ -1,0 +1,3 @@
+https://github.com/heroku/heroku-buildpack-ruby
+git@git.cupcake.io:c/cupcake-static-buildpack.git
+https://github.com/titanous/caddy-buildpack

@@ -213,8 +213,6 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    puma (2.7.1)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
@@ -255,7 +253,6 @@ DEPENDENCIES
   mime-types
   mimetype-fu
   omniauth-tent!
-  puma
   rack-putty!
   rake
   raven-js!
@@ -268,3 +265,6 @@ DEPENDENCIES
   tent-client!
   uglifier
   yajl-ruby
+
+BUNDLED WITH
+   1.11.2
