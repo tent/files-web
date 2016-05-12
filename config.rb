@@ -5,6 +5,7 @@ require 'marbles-js'
 require 'marbles-tent-client-js'
 require 'raven-js'
 require 'icing'
+require 'icing/compiler'
 require 'contacts-service'
 require "cupcake-apps-bar"
 
@@ -17,7 +18,6 @@ StaticSprockets.configure(
   :layout_dir => ENV['LAYOUT_DIR'] || "./build",
   :output_dir => ENV['ASSETS_DIR'] || "./build",
   :output_asset_names => %w(
-    icing.css
     application.css
     application.js
     moment.js
@@ -26,7 +26,8 @@ StaticSprockets.configure(
     raven.js
     contacts_api.js
     marbles.js
-  ),
+    lodash.js
+  ).concat(Icing::Compiler::ASSET_NAMES),
   :content_security_policy => {
     'frame-src' => [ENV['CONTACTS_URL'], ENV['CUPCAKE_APPS_BAR_URL'], 'self'].reject { |i| i.nil? }.join(' ')
   }
