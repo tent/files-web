@@ -17,5 +17,5 @@ header / {
   X-XSS-Protection "1; mode=block"
   X-Content-Type-Options "nosniff"
   X-Frame-Options "DENY"
-  Content-Security-Policy "default-src 'self'; connect-src *; frame-ancestors 'none'; child-src https://*.cupcake.io; img-src *; object-src 'none'"
+  Content-Security-Policy "default-src 'self'; connect-src *; frame-ancestors 'none'; child-src https://*.cupcake.io; frame-src https://*.cupcake.io; img-src *; object-src 'none'"
 }
